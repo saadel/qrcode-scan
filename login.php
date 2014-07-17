@@ -4,7 +4,7 @@ $session = new Session();
 
 if($session->is_loggedin())
 {
-    header('Location: barcode.php');
+    header('Location: qrcode.php');
 }
 
 ?>
@@ -14,7 +14,7 @@ if($session->is_loggedin())
   
 <head>
     <meta charset="utf-8">
-    <title>Login - Barcode Scan</title>
+    <title>Login - QR Code Scan</title>
 
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <meta name="apple-mobile-web-app-capable" content="yes"> 
@@ -45,7 +45,7 @@ if($session->is_loggedin())
 			</a>
 			
 			<a class="brand" href="index.php">
-				Barcode Scan				
+				QR Code Scan				
 			</a>		
 			
 			<div class="nav-collapse">

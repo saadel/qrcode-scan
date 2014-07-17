@@ -26,7 +26,7 @@ $chefs=Chef::chefs();
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<title>Dashboard - Barcode Scan</title>
+<title>Dashboard - QR Code Scan</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <link href="css/bootstrap.min.css" rel="stylesheet">
@@ -51,7 +51,7 @@ $chefs=Chef::chefs();
                       QRcode::png('Ouvrier1', 'test.png', 'L', 1, 2);
                       echo '<img src="test.png" />';
                     ?>
-                    Barcode Scan</a>
+                    QR Code Scan</a>
       <div class="nav-collapse">
         <ul class="nav pull-right">
           <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown"><i
@@ -136,11 +136,12 @@ $chefs=Chef::chefs();
 	                    <td>
 	                    <?php echo escape($chef["c_nom"]); ?></td>
 	                    <td><?php echo escape($chef["c_prenom"]); ?></td>
-	                    <td class="td-actions"><a href="barcode.php?id=<?php echo escape($chef["c_id"]); ?>" class="btn btn-small btn-success"><i class="btn-icon-only  icon-group"> </i></a><a href="javascript:;" class="btn btn-danger btn-small"><i class="btn-icon-only icon-remove"> </i></a></td>
+	                    <td class="td-actions"><a href="qrcode.php?id=<?php echo escape($chef["c_id"]); ?>" class="btn btn-small btn-success"><i class="btn-icon-only  icon-group"> </i></a><a href="javascript:;" class="btn btn-danger btn-small"><i class="btn-icon-only icon-remove"> </i></a></td>
 	                  </tr>
 					<?php endforeach; ?>
 	                </tbody>
 	              </table>
+	            </div>
             <?php 
         	} else {
             	$ouvriers=Ouvrier::liste_ouvriers_chef($_GET['id']);
@@ -169,10 +170,40 @@ $chefs=Chef::chefs();
 					<?php endforeach; ?>
 	                </tbody>
 	              </table>
+	              <!-- <div class="form-actions"> -->
+                  <!-- </div> -->
+            	</div>
+                <br /><div class="controls">
+                <a href="#myModal" role="button" class="btn btn-info" data-toggle="modal">Ajouter un ouvrier</a>
+                </div>
+                <!-- Modal -->
+                <div id="myModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                  <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                    <h3 id="myModalLabel">Ajout d'un nouveau ouvrier</h3>
+                  </div>
+                  <div class="modal-body">
+                    <!-- <p>One fine body…</p> -->
+                    <form>
+                    	<div class="form-group">
+	                      <input name="nom" type="text" class="form-control" required placeholder="Nom">
+	                    </div>
+	                    <div class="form-group">
+	                      <input name="prenom" type="text" class="form-control" required placeholder="Prenom">
+	                  </div>
+	                  <div class="form-group">
+	                    <button class="btn" data-dismiss="modal" aria-hidden="true">Générer le qr code</button>
+	                </div>
+                    </form>
+                  </div>
+                  <div class="modal-footer">
+                    <button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
+                    <button class="btn btn-primary">Save changes</button>
+                  </div>
+                </div>
             <?php } ?>
-            </div>
             <!-- /widget-content --> 
-          
+          </div>
         </div>
       </div>
     </div>
