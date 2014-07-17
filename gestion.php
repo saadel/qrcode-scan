@@ -48,8 +48,8 @@ $chefs=Chef::chefs();
                     class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span> </a>
                     <a class="brand" href="index.php">
                     <?php            
-                      QRcode::png('Ouvrier1', 'test.png', 'L', 1, 2);
-                      echo '<img src="test.png" />';
+                      QRcode::png('Logo', 'qrs/logo.png', 'L', 1, 2);
+                      echo '<img src="qrs/logo.png" />';
                     ?>
                     QR Code Scan</a>
       <div class="nav-collapse">
@@ -136,7 +136,7 @@ $chefs=Chef::chefs();
 	                    <td>
 	                    <?php echo escape($chef["c_nom"]); ?></td>
 	                    <td><?php echo escape($chef["c_prenom"]); ?></td>
-	                    <td class="td-actions"><a href="qrcode.php?id=<?php echo escape($chef["c_id"]); ?>" class="btn btn-small btn-success"><i class="btn-icon-only  icon-group"> </i></a><a href="javascript:;" class="btn btn-danger btn-small"><i class="btn-icon-only icon-remove"> </i></a></td>
+	                    <td class="td-actions"><a href="gestion.php?id=<?php echo escape($chef["c_id"]); ?>" class="btn btn-small btn-success"><i class="btn-icon-only  icon-group"> </i></a><a href="javascript:;" class="btn btn-danger btn-small"><i class="btn-icon-only icon-remove"> </i></a></td>
 	                  </tr>
 					<?php endforeach; ?>
 	                </tbody>

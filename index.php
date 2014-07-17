@@ -6,7 +6,7 @@ $session = new Session();
 
 if($session->is_loggedin())
 {
-    header('Location: qrcode.php');
+    header('Location: gestion.php');
 }
 
 ?>
@@ -44,9 +44,12 @@ if($session->is_loggedin())
 				<span class="icon-bar"></span>
 			</a>
 			
-			<a class="brand" href="index.html">
-				QR Code Scan				
-			</a>					
+			<a class="brand" href="index.php">
+            <?php            
+              QRcode::png('Logo-qrscan', 'qrs/logo.png', 'L', 1, 2);
+              echo '<img src="qrs/logo.png" />';
+            ?>
+            QR Code Scan</a>					
 	
 		</div> <!-- /container -->
 		
@@ -68,8 +71,8 @@ if($session->is_loggedin())
 				<h2>Bienvenue à QR Code Scan</h2>
 				<div>
 				<?php 					 
-					QRcode::png('Ouvrier1', 'img/test.png', 'L', 4, 2);
-					echo '<img src="img/test.png" />';
+					QRcode::png('QR Code Scan', 'qrs/qrcodescan.png', 'L', 4, 2);
+					echo '<img src="qrs/qrcodescan.png" />';
 				?>
 				</div>
 				<div class="error-details">

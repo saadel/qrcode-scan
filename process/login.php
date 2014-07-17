@@ -32,7 +32,7 @@
                 $data=$ut->get_utilisateur();
 				$session->login($data["u_id"],true);
 				$session->remember_me();
-				header('Location: ../barcode.php');
+				header('Location: ../gestion.php');
     	}
     }
 ?>
