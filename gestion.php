@@ -136,12 +136,39 @@ $chefs=Chef::chefs();
 	                    <td>
 	                    <?php echo escape($chef["c_nom"]); ?></td>
 	                    <td><?php echo escape($chef["c_prenom"]); ?></td>
-	                    <td class="td-actions"><a href="gestion.php?id=<?php echo escape($chef["c_id"]); ?>" class="btn btn-small btn-success"><i class="btn-icon-only  icon-group"> </i></a><a href="javascript:;" class="btn btn-danger btn-small"><i class="btn-icon-only icon-remove"> </i></a></td>
+	                    <td class="td-actions"><a href="gestion.php?id=<?php echo escape($chef["c_id"]); ?>" class="btn btn-small btn-invert"><i class="btn-icon-only  icon-group"> Ouvriers</i></a><a href="javascript:;" class="btn btn-danger btn-small"><i class="btn-icon-only icon-remove"> </i></a></td>
 	                  </tr>
 					<?php endforeach; ?>
 	                </tbody>
 	              </table>
 	            </div>
+                <br /><div class="controls">
+                <a href="#myModal" role="button" class="btn btn-info" data-toggle="modal">Ajouter un chef</a>
+                </div>
+                <!-- Modal -->
+                <div id="myModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                  <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                    <h3 id="myModalLabel">Ajout d'un nouveau chef</h3>
+                  </div>
+                    <form action="process/add.php" method="post">
+                      <div class="modal-body">
+                        <!-- <p>One fine body…</p> -->
+                            <div class="form-group">
+                              <input name="nomchef" type="text" class="form-control" required placeholder="Nom">
+                            </div>
+                            <div class="form-group">
+                              <input name="prenomchef" type="text" class="form-control" required placeholder="Prenom">
+                          </div>
+                      </div>
+                      <div class="modal-footer">
+                        <button class="btn" data-dismiss="modal" aria-hidden="true">Annuler</button>
+                        <button class="btn btn-primary">Enregistrer</button>
+                      </div>
+                    </form>
+                </div>
+
+
             <?php 
         	} else {
             	$ouvriers=Ouvrier::liste_ouvriers_chef($_GET['id']);
@@ -165,13 +192,11 @@ $chefs=Chef::chefs();
 	                    <td>
 	                    <?php echo escape($ouvrier["o_nom"]); ?></td>
 	                    <td><?php echo escape($ouvrier["o_prenom"]); ?></td>
-	                    <td class="td-actions"><a href="rapports.php?id=<?php echo escape($ouvrier["o_id"]); ?>" class="btn btn-small btn-success"><i class="btn-icon-only icon-time"> </i></a><a href="javascript:;" class="btn btn-danger btn-small"><i class="btn-icon-only icon-remove"> </i></a></td>
+	                    <td class="td-actions"><a href="rapports.php?id=<?php echo escape($ouvrier["o_id"]); ?>" class="btn btn-small btn-invert"><i class="btn-icon-only icon-time"> Rapport</i></a><a href="javascript:;" class="btn btn-danger btn-small"><i class="btn-icon-only icon-remove"> </i></a></td>
 	                  </tr>
 					<?php endforeach; ?>
 	                </tbody>
-	              </table>
-	              <!-- <div class="form-actions"> -->
-                  <!-- </div> -->
+	              </table>	              
             	</div>
                 <br /><div class="controls">
                 <a href="#myModal" role="button" class="btn btn-info" data-toggle="modal">Ajouter un ouvrier</a>
@@ -182,28 +207,39 @@ $chefs=Chef::chefs();
                     <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
                     <h3 id="myModalLabel">Ajout d'un nouveau ouvrier</h3>
                   </div>
-                  <div class="modal-body">
-                    <!-- <p>One fine body…</p> -->
-                    <form>
-                    	<div class="form-group">
-	                      <input name="nom" type="text" class="form-control" required placeholder="Nom">
-	                    </div>
-	                    <div class="form-group">
-	                      <input name="prenom" type="text" class="form-control" required placeholder="Prenom">
-	                  </div>
-	                  <div class="form-group">
-	                    <button class="btn" data-dismiss="modal" aria-hidden="true">Générer le qr code</button>
-	                </div>
+                    <form method="post" action="process/add.php">
+                      <div class="modal-body">
+                        <!-- <p>One fine body…</p> -->
+                        	<div class="form-group">
+    	                      <input name="nomouvrier" type="text" class="form-control" required placeholder="Nom">
+    	                    </div>
+    	                    <div class="form-group">
+    	                      <input name="prenomouvrier" type="text" class="form-control" required placeholder="Prenom">
+    	                  </div>
+    	                  <div class="form-group" id="qr">
+                            <?php
+                                $qrcode = md5($_GET['id'] + microtime());
+                                $qrcode = substr($qrcode, -13, 7);
+                                $qrsrc = 'qrs/qr' . $qrcode . '.png';
+                                QRcode::png('qrcodescan.com?ouvrier' . $qrcode , $qrsrc, 'L', 4, 2);
+                            ?>
+                            <script>
+                                var DOM_img = document.createElement("img");
+                                DOM_img.src = "<?php echo($qrsrc); ?>";
+    	                    </script>
+                            <input type="hidden" name="qrcode" value="<?php echo $qrcode; ?>">
+                            <input type="hidden" name="chef" value="<?php echo $_GET['id']; ?>">
+                            <button type="button" class="btn" onclick="document.getElementById('qr').appendChild(DOM_img)">Générer le QR Code</button>
+    	                </div>
+                      </div>
+                      <div class="modal-footer">
+                        <button class="btn" data-dismiss="modal" aria-hidden="true">Annuler</button>
+                        <button class="btn btn-primary">Enregistrer</button>
+                      </div>
                     </form>
-                  </div>
-                  <div class="modal-footer">
-                    <button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
-                    <button class="btn btn-primary">Save changes</button>
-                  </div>
                 </div>
             <?php } ?>
             <!-- /widget-content --> 
-          </div>
         </div>
       </div>
     </div>
