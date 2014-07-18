@@ -221,7 +221,7 @@ $chefs=Chef::chefs();
                                 $qrcode = md5($_GET['id'] + microtime());
                                 $qrcode = substr($qrcode, -13, 7);
                                 $qrsrc = 'qrs/qr' . $qrcode . '.png';
-                                QRcode::png('qrcodescan.com?ouvrier' . $qrcode , $qrsrc, 'L', 4, 2);
+                                QRcode::png('qrcodescan.com/rapports.php?ouvrier' . $qrcode , $qrsrc, 'L', 4, 2);
                             ?>
                             <script>
                                 var DOM_img = document.createElement("img");
