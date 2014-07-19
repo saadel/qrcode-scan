@@ -196,9 +196,10 @@ $chefs=Chef::chefs();
 	              <table class="table table-striped table-bordered">
 	                <thead>
 	                  <tr>
-	                    <th> Nom </th>
-	                    <th> Prénom </th>
-	                    <th class="td-actions"> </th>
+                    <th class="td-photos"></th>
+                      <th> Nom </th>
+                      <th> Prénom </th>
+                      <th class="td-actions"> </th>
 	                  </tr>
 	                </thead>
 	                <tbody>
@@ -206,6 +207,21 @@ $chefs=Chef::chefs();
 	                  <tr>
 	                  	<?php $oid = $ouvrier["o_id"]; ?>
 	                    <td>
+                      <div class="from_user left"> 
+                      <!-- <a href="#" class="avatar"><img src="img/message_avatar1.png"/></a> -->
+                          <img src="<?php if(empty($ouvrier["photo"]))
+                          {
+                              echo "img/message_avatar1.png";
+                          }else
+                          {
+                             echo  escape($ouvrier["photo"]);      
+                          }
+                          ?>"/>
+                     
+                          <!-- Changer la photo <input type="file"> -->
+                        </div>
+                      </td>
+                      <td>
 	                    <?php echo escape($ouvrier["o_nom"]); ?></td>
 	                    <td><?php echo escape($ouvrier["o_prenom"]); ?></td>
 	                    <td class="td-actions"><a href="rapports.php?id=<?php echo escape($oid); ?>" class="btn btn-small btn-invert"><i class="btn-icon-only icon-time"> Rapport</i></a>
@@ -246,7 +262,10 @@ $chefs=Chef::chefs();
     	                    </div>
     	                    <div class="form-group">
     	                      <input name="prenomouvrier" type="text" class="form-control" required placeholder="Prenom">
-    	                  </div>
+    	                    </div>
+
+                            <!-- <input  type="file" name="ophoto" class="form-control" required > -->
+                        </div>
     	                  <div class="form-group" id="qr">
                             <?php
                                 $qrcode = md5($_GET['id'] + microtime());

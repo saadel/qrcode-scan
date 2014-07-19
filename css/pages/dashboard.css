@@ -185,6 +185,12 @@ Bootstrap Admin Template by EGrappler.com
 	text-align: center; 
 }
 
+.action-table .td-photos { 
+	width: 45px; 
+	
+	text-align: center; 
+}
+
 	.action-table .td-actions .btn { 
 		margin-right: .5em;		
 	}
