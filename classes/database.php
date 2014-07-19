@@ -39,14 +39,5 @@ class Database{
 }
 
 $db = new Database();
-/*
-	$sql="insert into etudiant (E_nom,E_prenom) values (:E_nom,:E_prenom)";
-	$data=array("E_nom"=>"otmane","E_prenom"=>"el guenouni");
-	$re=$db->query($sql,$data);
-	echo $db->affected_rows($re)."<br>";
-	echo $db->last_insert_id()."<br>";
-
-	$db->close_connection();
-*/
 
 ?>

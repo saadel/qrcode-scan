@@ -133,11 +133,27 @@ $chefs=Chef::chefs();
 	                <tbody>
 	                <?php foreach($chefs as $chef):?>
 	                  <tr>
+	                  	<?php $id = $chef["c_id"]; ?>
 	                    <td>
 	                    <?php echo escape($chef["c_nom"]); ?></td>
 	                    <td><?php echo escape($chef["c_prenom"]); ?></td>
-	                    <td class="td-actions"><a href="gestion.php?id=<?php echo escape($chef["c_id"]); ?>" class="btn btn-small btn-invert"><i class="btn-icon-only  icon-group"> Ouvriers</i></a><a href="javascript:;" class="btn btn-danger btn-small"><i class="btn-icon-only icon-remove"> </i></a></td>
-	                  </tr>
+	                    <td class="td-actions"><a href="gestion.php?id=<?php echo escape($id); ?>" class="btn btn-small btn-invert"><i class="btn-icon-only  icon-group"> Ouvriers</i></a>
+                      <a href="#deleteChef<?php echo $id; ?>" role="button" data-toggle="modal" class="btn btn-danger btn-small"><i class="btn-icon-only icon-remove"> </i></a>
+  	                  <div id="deleteChef<?php echo $id; ?>" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                      <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                        <h3 id="myModalLabel">Êtes-vous sûr de vouloir supprimer ce chef</h3>
+                      </div>
+                        <form action="process/delete.php" method="post">
+                          <div class="modal-body pull-left">    
+                          	<input type="hidden" name="idchef" value='<?php echo escape($id); ?>'>                      
+                            <button class="btn btn-danger">Supprimer</button>
+                            <button class="btn" data-dismiss="modal" aria-hidden="true">Annuler</button>
+                          </div>
+                        </form>
+                    </div>
+                    </td>
+                    </tr>
 					<?php endforeach; ?>
 	                </tbody>
 	              </table>
@@ -153,7 +169,6 @@ $chefs=Chef::chefs();
                   </div>
                     <form action="process/add.php" method="post">
                       <div class="modal-body">
-                        <!-- <p>One fine body…</p> -->
                             <div class="form-group">
                               <input name="nomchef" type="text" class="form-control" required placeholder="Nom">
                             </div>
@@ -162,8 +177,8 @@ $chefs=Chef::chefs();
                           </div>
                       </div>
                       <div class="modal-footer">
-                        <button class="btn" data-dismiss="modal" aria-hidden="true">Annuler</button>
                         <button class="btn btn-primary">Enregistrer</button>
+                        <button class="btn" data-dismiss="modal" aria-hidden="true">Annuler</button>
                       </div>
                     </form>
                 </div>
@@ -189,11 +204,28 @@ $chefs=Chef::chefs();
 	                <tbody>
 	                <?php foreach($ouvriers as $ouvrier):?>
 	                  <tr>
+	                  	<?php $oid = $ouvrier["o_id"]; ?>
 	                    <td>
 	                    <?php echo escape($ouvrier["o_nom"]); ?></td>
 	                    <td><?php echo escape($ouvrier["o_prenom"]); ?></td>
-	                    <td class="td-actions"><a href="rapports.php?id=<?php echo escape($ouvrier["o_id"]); ?>" class="btn btn-small btn-invert"><i class="btn-icon-only icon-time"> Rapport</i></a><a href="javascript:;" class="btn btn-danger btn-small"><i class="btn-icon-only icon-remove"> </i></a></td>
-	                  </tr>
+	                    <td class="td-actions"><a href="rapports.php?id=<?php echo escape($oid); ?>" class="btn btn-small btn-invert"><i class="btn-icon-only icon-time"> Rapport</i></a>
+                        <a href="#deleteOuvrier<?php echo $oid; ?>"role="button" data-toggle="modal" class="btn btn-danger btn-small"><i class="btn-icon-only icon-remove"> </i></a></td>
+	                    <div id="deleteOuvrier<?php echo $oid; ?>" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+	                        <div class="modal-header">
+	                        	<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+	                      	    <h3 id="myModalLabel">Êtes-vous sûr de vouloir supprimer cet ouvrier</h3>
+	                        </div>
+	                        <form action="process/delete.php" method="post">
+	                        	<div class="modal-body pull-left">      
+	                        		<input type="hidden" name="chefid" value="<?php echo $_GET['id']; ?>">
+	                        		<input type="hidden" name="idouvrier" value='<?php echo escape($oid); ?>'>                      
+	                            	<button class="btn btn-danger">Supprimer</button>
+	                            	<button class="btn" data-dismiss="modal" aria-hidden="true">Annuler</button>
+	                          	</div>
+	                        </form>
+	                    </div>
+
+                    </tr>
 					<?php endforeach; ?>
 	                </tbody>
 	              </table>	              
@@ -209,7 +241,6 @@ $chefs=Chef::chefs();
                   </div>
                     <form method="post" action="process/add.php">
                       <div class="modal-body">
-                        <!-- <p>One fine body…</p> -->
                         	<div class="form-group">
     	                      <input name="nomouvrier" type="text" class="form-control" required placeholder="Nom">
     	                    </div>
@@ -221,7 +252,7 @@ $chefs=Chef::chefs();
                                 $qrcode = md5($_GET['id'] + microtime());
                                 $qrcode = substr($qrcode, -13, 7);
                                 $qrsrc = 'qrs/qr' . $qrcode . '.png';
-                                QRcode::png('qrcodescan.com/rapports.php?ouvrier' . $qrcode , $qrsrc, 'L', 4, 2);
+                                QRcode::png('qrcodescan.com/qrcode.php?o=' . $qrcode , $qrsrc, 'L', 4, 2);
                             ?>
                             <script>
                                 var DOM_img = document.createElement("img");
@@ -233,8 +264,8 @@ $chefs=Chef::chefs();
     	                </div>
                       </div>
                       <div class="modal-footer">
-                        <button class="btn" data-dismiss="modal" aria-hidden="true">Annuler</button>
                         <button class="btn btn-primary">Enregistrer</button>
+                        <button class="btn" data-dismiss="modal" aria-hidden="true">Annuler</button>
                       </div>
                     </form>
                 </div>
@@ -250,51 +281,9 @@ $chefs=Chef::chefs();
 <div class="extra">
   <div class="extra-inner">
     <div class="container">
-      <div class="row">
-                    <div class="span3">
-                        <h4>
-                            About Free Admin Template</h4>
-                        <ul>
-                            <li><a href="javascript:;">EGrappler.com</a></li>
-                            <li><a href="javascript:;">Web Development Resources</a></li>
-                            <li><a href="javascript:;">Responsive HTML5 Portfolio Templates</a></li>
-                            <li><a href="javascript:;">Free Resources and Scripts</a></li>
-                        </ul>
-                    </div>
-                    <!-- /span3 -->
-                    <div class="span3">
-                        <h4>
-                            Support</h4>
-                        <ul>
-                            <li><a href="javascript:;">Frequently Asked Questions</a></li>
-                            <li><a href="javascript:;">Ask a Question</a></li>
-                            <li><a href="javascript:;">Video Tutorial</a></li>
-                            <li><a href="javascript:;">Feedback</a></li>
-                        </ul>
-                    </div>
-                    <!-- /span3 -->
-                    <div class="span3">
-                        <h4>
-                            Something Legal</h4>
-                        <ul>
-                            <li><a href="javascript:;">Read License</a></li>
-                            <li><a href="javascript:;">Terms of Use</a></li>
-                            <li><a href="javascript:;">Privacy Policy</a></li>
-                        </ul>
-                    </div>
-                    <!-- /span3 -->
-                    <div class="span3">
-                        <h4>
-                            Open Source jQuery Plugins</h4>
-                        <ul>
-                            <li><a href="http://www.egrappler.com">Open Source jQuery Plugins</a></li>
-                            <li><a href="http://www.egrappler.com;">HTML5 Responsive Tempaltes</a></li>
-                            <li><a href="http://www.egrappler.com;">Free Contact Form Plugin</a></li>
-                            <li><a href="http://www.egrappler.com;">Flat UI PSD</a></li>
-                        </ul>
-                    </div>
-                    <!-- /span3 -->
-                </div>
+        <div class="row">
+            <!-- Copyright © HouTelecom 2014. Tous droits réservés.  -->
+        </div>
       <!-- /row --> 
     </div>
     <!-- /container --> 
@@ -306,7 +295,7 @@ $chefs=Chef::chefs();
   <div class="footer-inner">
     <div class="container">
       <div class="row">
-        <div class="span12"> &copy; 2014 <a href="http://www.houtelecom.com/">HouTelecom</a>. </div>
+        <div class="span12"> Copyright &copy; <a href="http://www.houtelecom.com/">HouTelecom</a> 2014. Tous droits réservés. </div>
         <!-- /span12 --> 
       </div>
       <!-- /row --> 
@@ -316,9 +305,6 @@ $chefs=Chef::chefs();
   <!-- /footer-inner --> 
 </div>
 <!-- /footer --> 
-<!-- Le javascript
-================================================== --> 
-<!-- Placed at the end of the document so the pages load faster --> 
 <script src="js/jquery-1.7.2.min.js"></script> 
 <script src="js/excanvas.min.js"></script> 
 <script src="js/chart.min.js" type="text/javascript"></script> 

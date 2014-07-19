@@ -91,6 +91,21 @@
 		
 		}
 
+		public function delete()
+		{
+			global $db;
+			$sql = "DELETE FROM " . self::$_table;
+			$sql .= " WHERE o_id=:o_id;";			
+			$re = $db->query($sql, array("o_id"=>$this->ouvrier["o_id"]));
+			if($db->affected_rows($re) > 0)
+			{
+				return true;
+			}
+			else
+			{
+				return false;
+			}
+		}
 
 		public function update()
 		{

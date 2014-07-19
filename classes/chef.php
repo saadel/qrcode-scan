@@ -111,6 +111,22 @@
 			}
 		}
 		
+		public function delete()
+		{
+			global $db;
+			$sql = "DELETE FROM " . self::$_table;
+			$sql .= " WHERE c_id=:c_id;";			
+			$re = $db->query($sql, array("c_id"=>$this->chef["c_id"]));
+			if($db->affected_rows($re) > 0)
+			{
+				return true;
+			}
+			else
+			{
+				return false;
+			}
+		}
+
 		public static function chefs()
 		{
 			global $db;
