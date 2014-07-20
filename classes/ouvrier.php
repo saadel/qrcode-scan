@@ -55,6 +55,26 @@
 			}	
 		}
 
+				public function find_by_qrcode($qr)
+				{
+					global $db;
+
+					$sql = "SELECT * FROM " . self::$_table;
+					$sql .= " WHERE qrcode=:qrcode"; 
+					$sql .= " LIMIT 1;";
+
+					$re = $db->query($sql, array("qrcode"=>$qr));
+					$resultat = $re->fetch(PDO::FETCH_ASSOC);
+
+					if(empty($resultat))
+					{
+						$this->ouvrier = array();
+					}
+					else
+					{
+						$this->ouvrier = $resultat;
+					}	
+				}
 
 		public function count_all()
 		{
