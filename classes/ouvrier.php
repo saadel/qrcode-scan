@@ -69,10 +69,12 @@
 					if(empty($resultat))
 					{
 						$this->ouvrier = array();
+						return false;
 					}
 					else
 					{
 						$this->ouvrier = $resultat;
+						return true;
 					}	
 				}
 

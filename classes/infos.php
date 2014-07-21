@@ -14,7 +14,6 @@
 			"i_jour"=>null,
 			"heure_debut"=>null,
 			"heure_fin"=>null,
-			"durée"=>null,
 			"o_id"=>null
 			);
 		}
@@ -54,6 +53,7 @@
 			
 			return array_shift($resultat);
 		}
+
 		public function create()
 		{
 			global $db;
@@ -118,35 +118,12 @@
 				return false;
 			}
 		}
-		public function envoie($o_id)
-		{
-			global $db;
-			$sql="insert 
-				into envoie
-				values(:o_id,:i_id) ";
-				$re=$db->query($sql,array("o_id"=>$o_id,"i_id"=>$this->infos["i_id"]));
-				if($db->affected_rows($re)>0)
-				{
-					return true;
-				}else
-				{
-					
-					return false;
-				}	
-		}
 
 		public static function tous_les_infos()
 		{
 		
 	        global $db;
-			$sql="select 
-				  i_id,
-				  heure_debut,
-				  heure_fin,
-				  durée,
-				  o_id
-				  
-				  from infos;";	
+			$sql="select * from infos;";	
 		   
 		    $list=array();
 			$re=$db->query($sql);
@@ -155,29 +132,21 @@
 		
 		}
 		
-		public static function tous_infos_ouvrier($o_id,$offset=0,$limit=10)
+		public static function tous_infos_ouvrier($o_id, $limit=10)
 		{
 		
-	        global $db;
-			$sql="select 
-
-				  i_id,
-				  i_jour,
-				  heure_debut,
-				  heure_fin,
-				  durée				  
-
-				  from infos
-				  where o_id=:o_id
-				  limit  ".$offset.",".$limit.";";	
-		   
+	        global $db;		
+		
+			$sql='SELECT * FROM infos WHERE o_id=:o_id
+				ORDER BY i_id desc
+				limit '.$limit.';';			
+		
 		    $list=array();
 			$re=$db->query($sql,array("o_id"=>$o_id));
 			$list=$re->fetchAll(PDO::FETCH_ASSOC);
 			return $list;
 		
 		}
-		
 		
 	}
 

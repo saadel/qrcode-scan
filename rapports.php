@@ -93,7 +93,7 @@ $ut_data= $ut->get_utilisateur();
     <div class="container">
       <ul class="mainnav">
         <li class="active"><a href="index.php"><i class="icon-dashboard"></i><span>Gestion</span> </a> </li>
-        <li><a href="reports.html"><i class="icon-list-alt"></i><span>Rapports</span> </a> </li>
+        <li><a href="rapports.php"><i class="icon-list-alt"></i><span>Rapports</span> </a> </li>
         <!-- <li><a href="guidely.html"><i class="icon-facetime-video"></i><span>App Tour</span> </a></li> -->
         <li><a href="charts.html"><i class="icon-bar-chart"></i><span>Charts</span> </a> </li>
         <!-- <li><a href="shortcodes.html"><i class="icon-code"></i><span>Shortcodes</span> </a> </li> -->
