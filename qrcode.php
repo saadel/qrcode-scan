@@ -90,8 +90,8 @@ if(!$ou->find_by_qrcode($_GET['o'])) {
   <div class="subnavbar-inner">
     <div class="container">
       <ul class="mainnav">
-        <li class="active"><a href="index.php"><i class="icon-dashboard"></i><span>Gestion</span> </a> </li>
-        <li><a href="rapports.php"><i class="icon-list-alt"></i><span>Rapports</span> </a> </li>
+        <li><a href="index.php"><i class="icon-dashboard"></i><span>Gestion</span> </a> </li>
+        <li class="active"><a href="rapports.php"><i class="icon-list-alt"></i><span>Rapports</span> </a> </li>
         <!-- <li><a href="guidely.html"><i class="icon-facetime-video"></i><span>App Tour</span> </a></li> -->
         <li><a href="charts.html"><i class="icon-bar-chart"></i><span>Charts</span> </a> </li>
         <!-- <li><a href="shortcodes.html"><i class="icon-code"></i><span>Shortcodes</span> </a> </li> -->
@@ -118,7 +118,6 @@ if(!$ou->find_by_qrcode($_GET['o'])) {
     <div class="container">
       <div class="row">
         <div class="span12">
-         <!-- if (!empty($_GET['o'])) { -->
         	<?php 
         		checkIn($_GET['o']);
                 
@@ -147,7 +146,36 @@ if(!$ou->find_by_qrcode($_GET['o'])) {
 	                  	<td><?php echo escape($info["i_jour"]); ?></td>
 	                    <td><?php echo escape($info["heure_debut"]); ?></td>
 	                    <td><?php echo escape($info["heure_fin"]); ?></td>
-	                    <td>test</td>
+	                     <td class="td-actions"><a href="#editInfo" role="button" data-toggle="modal" class="btn btn-small btn-invert"><i class="btn-icon-only icon-edit"> Modifier</i></a>
+                        <a href="#deleteInfo" role="button" data-toggle="modal" class="btn btn-danger btn-small"><i class="btn-icon-only icon-remove"> </i></a></td>
+                        <div id="deleteInfo" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                            <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                                <h3 id="myModalLabel">Êtes-vous sûr de vouloir supprimer cet enregistrement</h3>
+                            </div>
+                            <form action="process/delete.php" method="post">
+                                <div class="modal-body pull-left">      
+                                    <button class="btn btn-danger">Supprimer</button>
+                                    <button class="btn" data-dismiss="modal" aria-hidden="true">Annuler</button>
+                                </div>
+                            </form>
+                        </div>
+
+                        <div id="editInfo" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                            <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                                <h3 id="myModalLabel">Modification</h3>
+                            </div>
+                            <form action="process/edit.php" method="post">
+                                <div class="modal-body pull-left">      
+                                    <input type="text" placeholder="Heure d'entrée"><br>
+                                    <input type="text" placeholder="Heure de sortie"><br><br>
+                                    <button class="btn btn-primary">Enregistrer</button>
+                                    <button class="btn" data-dismiss="modal" aria-hidden="true">Annuler</button>
+                                </div>
+                            </form>
+                        </div>
+
                       </tr>
 					<?php endforeach; } ?>
 	                </tbody>

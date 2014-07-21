@@ -92,10 +92,10 @@ $ut_data= $ut->get_utilisateur();
   <div class="subnavbar-inner">
     <div class="container">
       <ul class="mainnav">
-        <li class="active"><a href="index.php"><i class="icon-dashboard"></i><span>Gestion</span> </a> </li>
-        <li><a href="rapports.php"><i class="icon-list-alt"></i><span>Rapports</span> </a> </li>
+        <li><a href="index.php"><i class="icon-dashboard"></i><span>Gestion</span> </a> </li>
+        <li class="active"><a href="rapports.php"><i class="icon-list-alt"></i><span>Rapports</span> </a> </li>
         <!-- <li><a href="guidely.html"><i class="icon-facetime-video"></i><span>App Tour</span> </a></li> -->
-        <li><a href="charts.html"><i class="icon-bar-chart"></i><span>Charts</span> </a> </li>
+        <li><a href="charts.html"><i class="icon-bar-chart"></i><span>Stats</span> </a> </li>
         <!-- <li><a href="shortcodes.html"><i class="icon-code"></i><span>Shortcodes</span> </a> </li> -->
         <li class="dropdown"><a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown"> <i class="icon-long-arrow-down"></i><span>Autres</span> <b class="caret"></b></a>
           <ul class="dropdown-menu">
@@ -264,7 +264,7 @@ $ut_data= $ut->get_utilisateur();
 
 <script src="js/jquery-1.7.2.min.js"></script>
 <script src="js/excanvas.min.js"></script>
-<script src="js/chart.min.js" type="text/javascript"></script>
+<script src="js/Chart.min.js" type="text/javascript"></script>
 <script src="js/bootstrap.js"></script>
 <script src="js/base.js"></script>
 <script>
