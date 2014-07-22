@@ -3,6 +3,7 @@ require_once '../classes/database.php';
 require_once '../classes/utilisateur.php';
 require_once '../classes/session.php';
 require_once '../classes/ouvrier.php';
+require_once '../classes/infos.php';
 require_once '../classes/chef.php';
 require_once 'users.php';
 
@@ -21,4 +22,11 @@ if(!empty($_POST['idchef'])) {
 	$ou->find_by_id($_POST['idouvrier']);
 	$ou->delete();
 	header('Location: ../gestion.php?id='. $_POST['chefid']);
+
+} else if(!empty($_POST['idinfo'])) {
+
+    $in = new Infos();
+    $in->find_by_id($_POST['idinfo']);
+    $in->delete();
+    header('Location: ../qrcode.php?o='. $_POST['qrcode']);    
 }
