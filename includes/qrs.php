@@ -62,5 +62,5 @@ function getDuree($heured, $heuref)
 	} else {
 			$hr = ' -- ';
 	}
-		return $hr;
+	return $hr;
 }

@@ -5,7 +5,6 @@ require_once('classes/infos.php');
 require_once('classes/ouvrier.php');
 require_once('includes/functions.php');
 require_once('includes/qrs.php');
-include('lib/phpqrcode/qrlib.php');
 
 
 $session = new Session();
@@ -53,10 +52,7 @@ if(!$ou->find_by_qrcode($_GET['o'])) {
     <div class="container"> <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse"><span
                     class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span> </a>
                     <a class="brand" href="index.php">
-                    <?php            
-                      QRcode::png('Logo', 'qrs/logo.png', 'L', 1, 2);
-                      echo '<img src="qrs/logo.png" />';
-                    ?>
+                    <i class="shortcut-icon icon-qrcode"></i>
                     QR Code Scan</a>
       <div class="nav-collapse">
         <ul class="nav pull-right">
@@ -93,7 +89,7 @@ if(!$ou->find_by_qrcode($_GET['o'])) {
         <li><a href="index.php"><i class="icon-dashboard"></i><span>Gestion</span> </a> </li>
         <li class="active"><a href="rapports.php"><i class="icon-list-alt"></i><span>Rapports</span> </a> </li>
         <!-- <li><a href="guidely.html"><i class="icon-facetime-video"></i><span>App Tour</span> </a></li> -->
-        <li><a href="charts.html"><i class="icon-bar-chart"></i><span>Charts</span> </a> </li>
+        <li><a href="stats.php"><i class="icon-bar-chart"></i><span>Charts</span> </a> </li>
         <!-- <li><a href="shortcodes.html"><i class="icon-code"></i><span>Shortcodes</span> </a> </li> -->
         <li class="dropdown"><a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown"> <i class="icon-long-arrow-down"></i><span>Autres</span> <b class="caret"></b></a>
           <ul class="dropdown-menu">

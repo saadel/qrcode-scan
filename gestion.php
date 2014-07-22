@@ -47,10 +47,7 @@ $chefs=Chef::chefs();
     <div class="container"> <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse"><span
                     class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span> </a>
                     <a class="brand" href="index.php">
-                    <?php            
-                      QRcode::png('Logo', 'qrs/logo.png', 'L', 1, 2);
-                      echo '<img src="qrs/logo.png" />';
-                    ?>
+                    <i class="shortcut-icon icon-qrcode"></i>
                     QR Code Scan</a>
       <div class="nav-collapse">
         <ul class="nav pull-right">
@@ -87,7 +84,7 @@ $chefs=Chef::chefs();
         <li class="active"><a href="index.php"><i class="icon-dashboard"></i><span>Gestion</span> </a> </li>
         <li><a href="rapports.php"><i class="icon-list-alt"></i><span>Rapports</span> </a> </li>
         <!-- <li><a href="guidely.html"><i class="icon-facetime-video"></i><span>App Tour</span> </a></li> -->
-        <li><a href="charts.html"><i class="icon-bar-chart"></i><span>Stats</span> </a> </li>
+        <li><a href="stats.php"><i class="icon-bar-chart"></i><span>Stats</span> </a> </li>
         <!-- <li><a href="shortcodes.html"><i class="icon-code"></i><span>Shortcodes</span> </a> </li> -->
         <li class="dropdown"><a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown"> <i class="icon-long-arrow-down"></i><span>Autres</span> <b class="caret"></b></a>
           <ul class="dropdown-menu">
@@ -114,22 +111,22 @@ $chefs=Chef::chefs();
         <div class="span6">
           <div class="widget widget-nopad">
             <div class="widget-header"> <i class="icon-list-alt"></i>
-              <h3> Today's Stats</h3>
+              <h3> Statistiques</h3>
             </div>
             <!-- /widget-header -->
             <div class="widget-content">
               <div class="widget big-stats-container">
                 <div class="widget-content">
-                  <h4 class="bigstats">
+                  <h6 class="bigstats">
                   <!-- A fully responsive premium quality admin template built 
                   on Twitter Bootstrap by <a href="http://www.egrappler.com" target="_blank">EGrappler.com</a>.  
                   These are some dummy lines to fill the area.</h6> -->
-                  <br><br>
-                  &nbsp;&nbsp; <i class="icon-user"></i>Utilisateurs&nbsp;&nbsp;&nbsp;  
-                  <i class="icon-user-md"></i>Chefs&nbsp;&nbsp; &nbsp; 
-                  <i class="icon-group"></i>Ouvriers&nbsp;&nbsp; &nbsp; 
-                  </h4>
                   <br>
+                  &nbsp;&nbsp;&nbsp;&nbsp; <i class="icon-user"></i>&nbsp;Utilisateurs&nbsp;&nbsp;&nbsp;  
+                  <i class="icon-user-md"></i>&nbsp;Chefs&nbsp;&nbsp; &nbsp; 
+                  <i class="icon-group"></i>&nbsp;Ouvriers&nbsp;&nbsp; &nbsp; 
+                  </h6>
+
                   <div id="big_stats" class="cf">
                     <!-- <div class="stat"> <i class="icon-anchor"></i> <span class="value">851</span> </div> -->
                     <!-- .stat -->
@@ -152,15 +149,15 @@ $chefs=Chef::chefs();
         <div class="span6">
           <div class="widget">
             <div class="widget-header"> <i class="icon-bookmark"></i>
-              <h3>Important Shortcuts</h3>
+              <h3>Raccourcis</h3>
             </div>
             <!-- /widget-header -->
             <div class="widget-content">
               <div class="shortcuts"> <a href="javascript:;" class="shortcut"><i class="shortcut-icon icon-list-alt"></i><span
-                                        class="shortcut-label">Apps</span> </a><a href="javascript:;" class="shortcut"><i
-                                            class="shortcut-icon icon-bookmark"></i><span class="shortcut-label">Bookmarks</span> </a><a href="javascript:;" class="shortcut"><i class="shortcut-icon icon-signal"></i> <span class="shortcut-label">Reports</span> </a><a href="javascript:;" class="shortcut"> <i class="shortcut-icon icon-comment"></i><span class="shortcut-label">Comments</span> </a><a href="javascript:;" class="shortcut"><i class="shortcut-icon icon-user"></i><span
-                                                class="shortcut-label">Users</span> </a><a href="javascript:;" class="shortcut"><i
-                                                    class="shortcut-icon icon-file"></i><span class="shortcut-label">Notes</span> </a><a href="javascript:;" class="shortcut"><i class="shortcut-icon icon-picture"></i> <span class="shortcut-label">Photos</span> </a><a href="javascript:;" class="shortcut"> <i class="shortcut-icon icon-tag"></i><span class="shortcut-label">Tags</span> </a> </div>
+                                        class="shortcut-label">Rapports</span> </a><a href="javascript:;" class="shortcut"><i
+                                            class="shortcut-icon  icon-sitemap"></i><span class="shortcut-label">Plan du site</span> </a><a href="javascript:;" class="shortcut"><i class="shortcut-icon icon-signal"></i> <span class="shortcut-label">Stats</span> </a><a href="javascript:;" class="shortcut"> <i class="shortcut-icon icon-qrcode"></i><span class="shortcut-label">QR Codes</span> </a><a href="javascript:;" class="shortcut"><i class="shortcut-icon icon-user"></i><span
+                                                class="shortcut-label">Utilisateurs</span> </a><a href="javascript:;" class="shortcut"><i
+                                                    class="shortcut-icon icon-file"></i><span class="shortcut-label">Notes</span> </a><a href="javascript:;" class="shortcut"><i class="shortcut-icon icon-picture"></i> <span class="shortcut-label">Photos</span> </a><a href="javascript:;" class="shortcut"> <i class="shortcut-icon icon-calendar"></i><span class="shortcut-label">Calendrier</span> </a> </div>
               <!-- /shortcuts --> 
             </div>
             <!-- /widget-content --> 
@@ -355,23 +352,19 @@ $chefs=Chef::chefs();
   <div class="footer-inner">
     <div class="container">
       <div class="row">
-        <div class="span12"> Copyright &copy; <a href="http://www.houtelecom.com/">HouTelecom</a> 2014. Tous droits réservés.
+        <div class="span12"> Copyright &copy; <a href="http://www.houtelecom.com/">HouTelecom</a> 2014.
+            Tous droits réservés.
         </div>
-        <!-- /span12 --> 
       </div>
-      <!-- /row --> 
     </div>
-    <!-- /container --> 
   </div>
-  <!-- /footer-inner --> 
 </div>
-<!-- /footer --> 
+
 <script src="js/jquery-1.7.2.min.js"></script> 
 <script src="js/excanvas.min.js"></script> 
 <script src="js/chart.min.js" type="text/javascript"></script> 
 <script src="js/bootstrap.js"></script>
 <script language="javascript" type="text/javascript" src="js/full-calendar/fullcalendar.min.js"></script>
- 
 <script src="js/base.js"></script> 
 </body>
 </html>

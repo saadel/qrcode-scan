@@ -45,10 +45,8 @@ if($session->is_loggedin())
 			</a>
 			
 			<a class="brand" href="index.php">
-            <?php            
-              QRcode::png('Logo-qrscan', 'qrs/logo.png', 'L', 1, 2);
-              echo '<img src="qrs/logo.png" />';
-            ?>
+            <a class="brand" href="index.php">
+            <i class="shortcut-icon icon-qrcode"></i>
             QR Code Scan</a>					
 	
 		</div> <!-- /container -->
@@ -74,7 +72,6 @@ if($session->is_loggedin())
 					QRcode::png('QR Code Scan', 'qrs/qrcodescan.png', 'L', 4, 2);
 					echo '<img src="qrs/qrcodescan.png" />';
 				?>
-				</div>
 				<div class="error-details">
 					Le site web pour la gestion des ouvriers
 					

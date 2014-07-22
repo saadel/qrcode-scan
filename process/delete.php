@@ -27,6 +27,7 @@ if(!empty($_POST['idchef'])) {
 
     $in = new Infos();
     $in->find_by_id($_POST['idinfo']);
+    $in_data = $in->get_infos();
     $in->delete();
-    header('Location: ../qrcode.php?o='. $_POST['qrcode']);    
+    header('Location: ../rapports.php?id='. $in_data['o_id']);    
 }

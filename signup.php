@@ -1,7 +1,6 @@
 <?php
 require_once('classes/session.php');
 require_once ('process/users.php');
-include('lib/phpqrcode/qrlib.php');
 
 $session = new Session();
 
@@ -48,10 +47,8 @@ if($session->is_loggedin())
 			</a>
 			
 			<a class="brand" href="index.php">
-            <?php            
-              QRcode::png('Logo-qrscan', 'qrs/logo.png', 'L', 1, 2);
-              echo '<img src="qrs/logo.png" />';
-            ?>
+            <a class="brand" href="index.php">
+            <i class="shortcut-icon icon-qrcode"></i>
             QR Code Scan</a>		
 			
 			<div class="nav-collapse">
