@@ -20,7 +20,7 @@ function checkIn($qrcode)
 			$b = strtotime($heure);
 			if (!is_null($info['heure_fin'])) {
 				$a = strtotime($info['heure_fin']);
-				if($b - $a > 1000) {
+				if($b - $a > 1000 || $jour != $info['i_jour']) {
 
 					$info_data = array(
 						"i_jour"=>$jour,
@@ -36,7 +36,7 @@ function checkIn($qrcode)
 			} else {
 				
 				$a = strtotime($info['heure_debut']);
-				if($b - $a > 1000) {
+				if($b - $a > 1000 || $jour != $info['i_jour']) {
 					
 					$in->find_by_id($info['i_id']);
 					$in->set_infos("heure_fin",$heure);
