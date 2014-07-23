@@ -18,7 +18,7 @@ function checkIn($qrcode)
 		foreach ($infos as $info) {
 			$in = new Infos();
 			$b = strtotime($heure);
-			if (!is_null($info['heure_fin'])) {
+			if (!is_null($info['heure_fin']) || $jour != $info['i_jour']) {
 				$a = strtotime($info['heure_fin']);
 				if($b - $a > 1000 || $jour != $info['i_jour']) {
 
@@ -46,9 +46,14 @@ function checkIn($qrcode)
 			}
 		}
 		if ($valid) {
-			echo '<div class="alert alert-info">
-		            <button type="button" class="close" data-dismiss="alert">&times;</button>
-		            <strong>Ok!</strong> Check-in enregistré.
+            echo '<div class="alert alert-info">
+		            <h2><strong>Ok!</strong><br>Check-in enregistré pour l\'ouvrier ' . $ou_data['o_prenom']. ' '.$ou_data['o_nom'].
+                        '.</h2><br> <br>
+                    <a href="rapports.php?id='.$ou_data['o_id'].'" class="btn btn-primary">
+                        &nbsp;
+                        Rapport de cet ouvrier                      
+                        <i class="icon-chevron-right"></i>
+                    </a>
 		        </div>';
 		}
 	}
