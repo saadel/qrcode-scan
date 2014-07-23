@@ -24,7 +24,6 @@ if(!$ou->find_by_qrcode($_GET['o'])) {
 } else {
     $ou_data = $ou->get_ouvrier();
     $infos=Infos::tous_infos_ouvrier($ou_data['o_id']);
-
 ?>
 
 <!DOCTYPE html>
@@ -116,71 +115,8 @@ if(!$ou->find_by_qrcode($_GET['o'])) {
         <div class="span12">
         	<?php 
         		checkIn($_GET['o']);
-                
+                } 
             ?>
-
-	        <div class="widget widget-table action-table">
-	            <div class="widget-header"> <i class="icon-th-list"></i>
-
-                  <h3>Infos - <?php echo escape($ou_data['o_prenom'] . ' ' . $ou_data['o_nom']); ?></h3>
-	          		</div>
-	            <!-- /widget-header -->
-	            <div class="widget-content">
-
-	              <table class="table table-striped table-bordered">
-	                <thead>
-	                  <tr>
-	                  	<th> Jour</th>
-	                    <th> Heure d'entrée </th>
-	                    <th> Heure de sortie </th>
-	                    <th class="td-actions"> </th>
-	                  </tr>
-	                </thead>
-	                <tbody>
-	                <?php foreach($infos as $info):?>
-	                  <tr>
-                        <?php $id = $info['i_id']; ?>
-	                  	<td><?php echo escape($info["i_jour"]); ?></td>
-	                    <td><?php echo escape($info["heure_debut"]); ?></td>
-	                    <td><?php echo escape($info["heure_fin"]); ?></td>
-	                    <td class="td-actions"><a href="#editInfo" role="button" data-toggle="modal" class="btn btn-small btn-invert"><i class="btn-icon-only icon-edit"> Modifier</i></a>
-                        <a href="#deleteInfo<?php echo $id; ?>" role="button" data-toggle="modal" class="btn btn-danger btn-small"><i class="btn-icon-only icon-remove"> </i></a></td>
-                        <div id="deleteInfo<?php echo $id; ?>" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-                            <div class="modal-header">
-                                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-                                <h3 id="myModalLabel">Êtes-vous sûr de vouloir supprimer cet enregistrement</h3>
-                            </div>
-                            <form action="process/delete.php" method="post">
-                                <div class="modal-body pull-left">      
-                                    <input type="hidden" name="idinfo" value='<?php echo escape($id); ?>'>                      
-                                    <input type="hidden" name="qrcode" value="<?php echo escape($ou_data['qrcode']); ?>" >
-                                    <button class="btn btn-danger">Supprimer</button>
-                                    <button class="btn" data-dismiss="modal" aria-hidden="true">Annuler</button>
-                                </div>
-                            </form>
-                        </div>
-
-                        <div id="editInfo" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-                            <div class="modal-header">
-                                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-                                <h3 id="myModalLabel">Modification</h3>
-                            </div>
-                            <form action="process/edit.php" method="post">
-                                <div class="modal-body pull-left">      
-                                    <input type="text" placeholder="Heure d'entrée"><br>
-                                    <input type="text" placeholder="Heure de sortie"><br><br>
-                                    <button class="btn btn-primary">Enregistrer</button>
-                                    <button class="btn" data-dismiss="modal" aria-hidden="true">Annuler</button>
-                                </div>
-                            </form>
-                        </div>
-
-                      </tr>
-					<?php endforeach; } ?>
-	                </tbody>
-	              </table>
-	            </div>                                
-            </div>
         </div>
       </div>
     </div>
