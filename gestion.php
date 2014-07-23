@@ -26,7 +26,7 @@ $chefs=Chef::chefs();
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<title>Dashboard - QR Code Scan</title>
+<title>Gestion - QR Code Scan</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <link href="css/bootstrap.min.css" rel="stylesheet">
@@ -130,12 +130,23 @@ $chefs=Chef::chefs();
                   <div id="big_stats" class="cf">
                     <!-- <div class="stat"> <i class="icon-anchor"></i> <span class="value">851</span> </div> -->
                     <!-- .stat -->
-                    <div class="stat"> <i class="icon-user"></i> <span class="value">2</span> </div>
+                    <div class="stat"> <i class="icon-user"></i> <span class="value">
+                    <?php 
+                        echo $ut->count_all();
+                    ?></span> </div>
                     <!-- .stat -->
                     
-                    <div class="stat"> <i class="icon-user-md"></i> <span class="value">5</span> </div>
+                    <div class="stat"> <i class="icon-user-md"></i> <span class="value">
+                    <?php 
+                        $ch = new Chef();
+                        echo $ch->count_all();
+                    ?></span> </div>
                     <!-- .stat -->
-                    <div class="stat"> <i class="icon-group"></i> <span class="value">23</span> </div>
+                    <div class="stat"> <i class="icon-group"></i> <span class="value">
+                    <?php 
+                        $ou = new Ouvrier();
+                        echo $ou->count_all();
+                    ?></span> </div>
                     
                     <!-- .stat --> 
                   </div>
@@ -155,7 +166,7 @@ $chefs=Chef::chefs();
             <div class="widget-content">
               <div class="shortcuts"> <a href="javascript:;" class="shortcut"><i class="shortcut-icon icon-list-alt"></i><span
                                         class="shortcut-label">Rapports</span> </a><a href="javascript:;" class="shortcut"><i
-                                            class="shortcut-icon  icon-sitemap"></i><span class="shortcut-label">Plan du site</span> </a><a href="javascript:;" class="shortcut"><i class="shortcut-icon icon-signal"></i> <span class="shortcut-label">Stats</span> </a><a href="javascript:;" class="shortcut"> <i class="shortcut-icon icon-qrcode"></i><span class="shortcut-label">QR Codes</span> </a><a href="javascript:;" class="shortcut"><i class="shortcut-icon icon-user"></i><span
+                                            class="shortcut-icon  icon-sitemap"></i><span class="shortcut-label">Plan du site</span> </a><a href="stats.php" class="shortcut"><i class="shortcut-icon icon-signal"></i> <span class="shortcut-label">Stats</span> </a><a href="pages/qrcodes.php" class="shortcut"> <i class="shortcut-icon icon-qrcode"></i><span class="shortcut-label">QR Codes</span> </a><a href="javascript:;" class="shortcut"><i class="shortcut-icon icon-user"></i><span
                                                 class="shortcut-label">Utilisateurs</span> </a><a href="javascript:;" class="shortcut"><i
                                                     class="shortcut-icon icon-file"></i><span class="shortcut-label">Notes</span> </a><a href="javascript:;" class="shortcut"><i class="shortcut-icon icon-picture"></i> <span class="shortcut-label">Photos</span> </a><a href="javascript:;" class="shortcut"> <i class="shortcut-icon icon-calendar"></i><span class="shortcut-label">Calendrier</span> </a> </div>
               <!-- /shortcuts --> 
@@ -346,6 +357,19 @@ $chefs=Chef::chefs();
       </div>
     </div>
   </div>
+</div>
+
+<div class="extra">
+  <div class="extra-inner">
+    <div class="container">
+        <div class="row">
+            <!-- Copyright © HouTelecom 2014. Tous droits réservés.  -->
+        </div>
+      <!-- /row -->
+    </div>
+    <!-- /container -->
+  </div>
+  <!-- /extra-inner -->
 </div>
 
 <div class="footer">
