@@ -164,9 +164,9 @@ $chefs=Chef::chefs();
             </div>
             <!-- /widget-header -->
             <div class="widget-content">
-              <div class="shortcuts"> <a href="javascript:;" class="shortcut"><i class="shortcut-icon icon-list-alt"></i><span
+              <div class="shortcuts"> <a href="rapports.php" class="shortcut"><i class="shortcut-icon icon-list-alt"></i><span
                                         class="shortcut-label">Rapports</span> </a><a href="javascript:;" class="shortcut"><i
-                                            class="shortcut-icon  icon-sitemap"></i><span class="shortcut-label">Plan du site</span> </a><a href="stats.php" class="shortcut"><i class="shortcut-icon icon-signal"></i> <span class="shortcut-label">Stats</span> </a><a href="pages/qrcodes.php" class="shortcut"> <i class="shortcut-icon icon-qrcode"></i><span class="shortcut-label">QR Codes</span> </a><a href="javascript:;" class="shortcut"><i class="shortcut-icon icon-user"></i><span
+                                            class="shortcut-icon  icon-sitemap"></i><span class="shortcut-label">Plan du site</span> </a><a href="stats.php" class="shortcut"><i class="shortcut-icon icon-signal"></i> <span class="shortcut-label">Stats</span> </a><a href="pages/qrcodes.php" class="shortcut"> <i class="shortcut-icon icon-qrcode"></i><span class="shortcut-label">QR Codes</span> </a><a href="pages/utilisateurs.php" class="shortcut"><i class="shortcut-icon icon-user"></i><span
                                                 class="shortcut-label">Utilisateurs</span> </a><a href="javascript:;" class="shortcut"><i
                                                     class="shortcut-icon icon-file"></i><span class="shortcut-label">Notes</span> </a><a href="javascript:;" class="shortcut"><i class="shortcut-icon icon-picture"></i> <span class="shortcut-label">Photos</span> </a><a href="javascript:;" class="shortcut"> <i class="shortcut-icon icon-calendar"></i><span class="shortcut-label">Calendrier</span> </a> </div>
               <!-- /shortcuts --> 

@@ -13,7 +13,6 @@ if(!$session->is_loggedin())
   $session->message("vous devez s'authentifier");
   header('Location: login.php');
 }
-$_SESSION["last_date"]="";
 $ut= new Utilisateur();
 $ut->find_by_id($session->get_user_id());
 
