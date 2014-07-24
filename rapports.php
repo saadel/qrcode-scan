@@ -117,7 +117,6 @@ $ut_data= $ut->get_utilisateur();
   <div class="main-inner">
     <div class="container">
       <div class="row">
-        <div class="span12">
 
                 <?php if (isset($_GET['id'])) {
                     $ou = new Ouvrier();
@@ -126,6 +125,7 @@ $ut_data= $ut->get_utilisateur();
                     $infos=Infos::tous_infos_ouvrier($ou_data['o_id']);
                 ?>
 
+        <div class="span12">
             <div class="widget widget-table action-table">
                 <div class="widget-header"> <i class="icon-th-list"></i>
                   <h3>Rapport - <?php echo escape($ou_data['o_prenom'] . ' ' . $ou_data['o_nom']); ?></h3>
@@ -184,9 +184,57 @@ $ut_data= $ut->get_utilisateur();
                         </div>
 
                       </tr>
-                    <?php endforeach; } ?>
+                    <?php endforeach; ?>
                     </tbody>
-                  </table>
+                  </table> 
+                    <?php } else {
+                        $chefs=Chef::chefs();
+                    ?>
+                    <?php foreach ($chefs as $chef): 
+                        $cid = $chef["c_id"]; 
+                    ?>
+                        <div class="span6">
+                        <div class="widget widget-table action-table">
+                            <div class="widget-header"> <i class="icon-th-list"></i>
+                              <h3>Ouvriers - <a href="gestion.php?id=<?php echo $cid; ?>">
+                                  <?php echo escape($chef['c_prenom'].' '.$chef['c_nom']); ?></a></h3>
+                            </div>
+                            <div class="widget-content">
+                              <table class="table table-striped table-bordered">
+                                <thead>
+                                  <tr>
+                                    <th class="td-photos"></th>
+                                    <th> Nom </th>
+                                    <th> Prenom</th>
+                                    <th class="td-actions"> </th>
+                                  </tr>
+                                </thead>
+                                <tbody>
+                                <?php $ouvriers=Ouvrier::liste_ouvriers_chef($cid); 
+                                    foreach ($ouvriers as $ouvrier):
+                                ?>
+                                  <tr>
+                                  <td>
+                                  <div class="from_user left"> 
+                                      <img src="<?php if(empty($ouvrier["photo"])) {
+                                          echo "img/message_avatar1.png";
+                                      } else {
+                                         echo  escape($ouvrier["photo"]);      
+                                      }?>"/>
+                                    </div>
+                                  </td>
+                                    <td><?php echo escape($ouvrier["o_nom"]); ?></td>
+                                    <td><?php echo escape($ouvrier["o_prenom"]); ?></td>
+                                    <td class="td-actions"><a href="rapports.php?id=<?php echo escape($ouvrier["o_id"]); ?>" class="btn btn-small btn-info">Détails<i class="btn-icon-only  icon-arrow-right"> </i></a></td>
+                                  </tr>
+                                  <?php endforeach; ?>
+                                </tbody>
+                              </table>
+                            </div>
+                            <!-- /widget-content --> 
+                        </div>
+                    </div>
+                    <?php endforeach; } ?>
                 </div>
             </div>
         </div>
