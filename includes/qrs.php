@@ -14,38 +14,52 @@ function checkIn($qrcode)
 		$heure = date("H:i:s");
 		$jour = date("Y-m-d");
 		$infos = Infos::tous_infos_ouvrier($ou_data['o_id'], 1);
-		
-		foreach ($infos as $info) {
-			$in = new Infos();
-			$b = strtotime($heure);
-			if (!is_null($info['heure_fin']) || $jour != $info['i_jour']) {
-				$a = strtotime($info['heure_fin']);
-				if($b - $a > 1000 || $jour != $info['i_jour']) {
+		if (!empty($infos)) {
+            foreach ($infos as $info) {
+                $in = new Infos();
+                $b = strtotime($heure);
+                if (!is_null($info['heure_fin']) || $jour != $info['i_jour']) {
+                    $a = strtotime($info['heure_fin']);
+                    if($b - $a > 1000 || $jour != $info['i_jour']) {
 
-					$info_data = array(
-						"i_jour"=>$jour,
-						"heure_debut"=>$heure,		
-						"o_id"=>$ou_data['o_id']
-					);
-					foreach ($info_data as $key => $value) {
-						$in->set_infos($key,$value);
-					}
-					$in->create();
-					$valid = true;
-				}
-			} else {
-				
-				$a = strtotime($info['heure_debut']);
-				if($b - $a > 1000 || $jour != $info['i_jour']) {
-					
-					$in->find_by_id($info['i_id']);
-					$in->set_infos("heure_fin",$heure);
-					$in->update();						
-					$valid = true;
-				}
-			}
-		}
-		if ($valid) {
+                        $info_data = array(
+                            "i_jour"=>$jour,
+                            "heure_debut"=>$heure,      
+                            "o_id"=>$ou_data['o_id']
+                        );
+                        foreach ($info_data as $key => $value) {
+                            $in->set_infos($key,$value);
+                        }
+                        $in->create();
+                        $valid = true;
+                    }
+                } else {
+                    
+                    $a = strtotime($info['heure_debut']);
+                    if($b - $a > 1000 || $jour != $info['i_jour']) {
+                        
+                        $in->find_by_id($info['i_id']);
+                        $in->set_infos("heure_fin",$heure);
+                        $in->update();                      
+                        $valid = true;
+                    }
+                }
+            }
+        } else { //Condition for first entry
+            $in = new Infos();
+            $info_data = array(
+                "i_jour"=>$jour,
+                "heure_debut"=>$heure,      
+                "o_id"=>$ou_data['o_id']
+            );
+            foreach ($info_data as $key => $value) {
+                $in->set_infos($key,$value);
+            }
+            $in->create();
+            $valid = true;
+        }
+
+        if ($valid) {
             echo '<div class="alert alert-info">
 		            <h2><strong>Ok!</strong><br>Check-in enregistré pour l\'ouvrier ' . $ou_data['o_prenom']. ' '.$ou_data['o_nom'].
                         '.</h2><br> <br>
@@ -57,15 +71,4 @@ function checkIn($qrcode)
 		        </div>';
 		}
 	}
-}
-
-function getDuree($heured, $heuref)
-{
-	if (!is_null($heuref)) {
-		$hr = strtotime($heuref) - strtotime($heured);
-		$hr = date("H:i:s", $hr);
-	} else {
-			$hr = ' -- ';
-	}
-	return $hr;
 }
