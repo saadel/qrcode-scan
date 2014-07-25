@@ -148,6 +148,21 @@
 		
 		}
 		
+        public static function tous_infos_ouvrier_jour($o_id, $jour, $limit=10)
+        {
+        
+            global $db;     
+        
+            $sql='SELECT * FROM infos WHERE o_id=:o_id AND i_jour=:jour
+                ORDER BY i_id desc
+                limit '.$limit.';';         
+        
+            $list=array();
+            $re=$db->query($sql,array("o_id"=>$o_id, "jour"=>$jour));
+            $list=$re->fetchAll(PDO::FETCH_ASSOC);
+            return $list;
+        
+        }
 	}
 
 
