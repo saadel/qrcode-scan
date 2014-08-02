@@ -2,7 +2,6 @@
 	require_once(__DIR__.'/../classes/database.php');
 	require_once(__DIR__.'/../classes/utilisateur.php');
 	require_once(__DIR__.'/../classes/session.php');
-	//require_once(__DIR__.'/../classes/email.php');
 	require_once(__DIR__.'/../lib/password.php');
 
 	global $id;

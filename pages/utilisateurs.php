@@ -80,12 +80,11 @@ $ut_data= $ut->get_utilisateur();
       <ul class="mainnav">
         <li><a href="../index.php"><i class="icon-dashboard"></i><span>Gestion</span> </a> </li>
         <li><a href="../rapports.php"><i class="icon-list-alt"></i><span>Rapports</span> </a> </li>
-        <li><a href="../stats.php"><i class="icon-bar-chart"></i><span>Charts</span> </a> </li>
+        <li><a href="../stats.php"><i class="icon-bar-chart"></i><span>Stats</span> </a> </li>
         <li class="dropdown active"><a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown"> <i class="icon-long-arrow-down"></i><span>Autres</span> <b class="caret"></b></a>
           <ul class="dropdown-menu">
-            <li><a href="icons.html">Icons</a></li>
-            <li><a href="faq.html">FAQ</a></li>
-            <li><a href="error.html">404</a></li>
+            <li><a href="qrcodes.php">QR Codes</a></li>
+            <li><a href="utilisateurs.php">Utilisateurs</a></li>
           </ul>
         </li>
       </ul>

@@ -88,12 +88,8 @@ $chefs=Chef::chefs();
         <!-- <li><a href="shortcodes.html"><i class="icon-code"></i><span>Shortcodes</span> </a> </li> -->
         <li class="dropdown"><a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown"> <i class="icon-long-arrow-down"></i><span>Autres</span> <b class="caret"></b></a>
           <ul class="dropdown-menu">
-            <li><a href="icons.html">Icons</a></li>
-            <li><a href="faq.html">FAQ</a></li>
-            <!-- <li><a href="pricing.html">Pricing Plans</a></li> -->
-            <!-- <li><a href="login.php">Login</a></li> -->
-            <!-- <li><a href="signup.php">Signup</a></li> -->
-            <li><a href="error.html">404</a></li>
+            <li><a href="qrcodes.php">QR Codes</a></li>
+            <li><a href="utilisateurs.php">Utilisateurs</a></li>            
           </ul>
         </li>
       </ul>
@@ -118,9 +114,6 @@ $chefs=Chef::chefs();
               <div class="widget big-stats-container">
                 <div class="widget-content">
                   <h6 class="bigstats">
-                  <!-- A fully responsive premium quality admin template built 
-                  on Twitter Bootstrap by <a href="http://www.egrappler.com" target="_blank">EGrappler.com</a>.  
-                  These are some dummy lines to fill the area.</h6> -->
                   <br>
                   &nbsp;&nbsp;&nbsp;&nbsp; <i class="icon-user"></i>&nbsp;Utilisateurs&nbsp;&nbsp;&nbsp;  
                   <i class="icon-user-md"></i>&nbsp;Chefs&nbsp;&nbsp; &nbsp; 
