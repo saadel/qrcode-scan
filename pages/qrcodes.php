@@ -10,7 +10,7 @@ $session = new Session();
 if(!$session->is_loggedin())
 {
   $session->message("vous devez s'authentifier");
-  header('Location: login.php');
+  header('Location: ../login.php');
 }
 $ut= new Utilisateur();
 $ut->find_by_id($session->get_user_id());
