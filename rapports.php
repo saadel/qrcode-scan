@@ -96,8 +96,8 @@ $ut_data= $ut->get_utilisateur();
         <!-- <li><a href="shortcodes.html"><i class="icon-code"></i><span>Shortcodes</span> </a> </li> -->
         <li class="dropdown"><a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown"> <i class="icon-long-arrow-down"></i><span>Autres</span> <b class="caret"></b></a>
           <ul class="dropdown-menu">
-            <li><a href="qrcodes.php">QR Codes</a></li>
-            <li><a href="utilisateurs.php">Utilisateurs</a></li>
+            <li><a href="pages/qrcodes.php">QR Codes</a></li>
+            <li><a href="pages/utilisateurs.php">Utilisateurs</a></li>
           </ul>
         </li>
       </ul>

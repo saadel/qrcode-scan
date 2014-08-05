@@ -186,7 +186,7 @@ $ut_data= $ut->get_utilisateur();
                       <tr>
                         <th> Nom </th>
                         <th> Prénom </th>
-                        <!-- <th class="td-actions"> </th> -->
+                        <th> identifiant </th>
                       </tr>
                     </thead>
                     <tbody>
@@ -195,6 +195,7 @@ $ut_data= $ut->get_utilisateur();
                         <td>
                         <?php echo escape($utilisateur["u_nom"]); ?></td>
                         <td><?php echo escape($utilisateur["u_prenom"]); ?></td>
+                        <td><?php echo escape($utilisateur["username"]); ?></td>
                     </tr>
                     <?php endforeach; ?>
                     </tbody>

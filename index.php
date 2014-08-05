@@ -63,9 +63,9 @@ if($session->is_loggedin())
 		<div class="span12">
 			
 			<div class="error-container">
-				<h1>QR Code Scan</h1>
+				<h2>QR Code Scan</h2>
 				
-				<h2>Bienvenue à QR Code Scan</h2>
+				<h3>Bienvenue à QR Code Scan</h3>
 				<div>
 				<?php 					 
 					QRcode::png('QR Code Scan', 'qrs/qrcodescan.png', 'L', 4, 2);

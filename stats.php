@@ -4,6 +4,7 @@ require_once('classes/utilisateur.php');
 require_once('classes/chef.php');
 require_once('classes/infos.php');
 require_once('classes/ouvrier.php');
+require_once('process/plot.php');
 require_once('includes/functions.php');
 
 $session = new Session();
@@ -84,8 +85,8 @@ $ut_data= $ut->get_utilisateur();
         <!-- <li><a href="shortcodes.html"><i class="icon-code"></i><span>Shortcodes</span> </a> </li> -->
         <li class="dropdown"><a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown"> <i class="icon-long-arrow-down"></i><span>Autres</span> <b class="caret"></b></a>
           <ul class="dropdown-menu">
-            <li><a href="qrcodes.php">QR Codes</a></li>
-            <li><a href="utilisateurs.php">Utilisateurs</a></li>
+            <li><a href="pages/qrcodes.php">QR Codes</a></li>
+            <li><a href="pages/utilisateurs.php">Utilisateurs</a></li>
           </ul>
         </li>
       </ul>
@@ -100,6 +101,15 @@ $ut_data= $ut->get_utilisateur();
             <div class="container">
                 <div class="row">
                     <div class="span6">
+                    <?php 
+                    if (isset($_GET['id'])) {
+                        $ou = new Ouvrier();
+                        $ou->find_by_id($_GET['id']);
+                        $ou_data = $ou->get_ouvrier();
+                        $barChartData = plotLastWeek($ou_data['o_id']);
+                        
+                    }
+                    ?>
                         <div class="widget">
                             <div class="widget-header">
                                 <i class="icon-bar-chart"></i>
@@ -189,75 +199,29 @@ $ut_data= $ut->get_utilisateur();
     </div>
     <!-- /main -->
     <div class="extra">
-        <div class="extra-inner">
-            <div class="container">
-                <div class="row">
-                    <div class="span3">
-                        <h4>
-                            About Free Admin Template</h4>
-                        <ul>
-                            <li><a href="javascript:;">EGrappler.com</a></li>
-                            <li><a href="javascript:;">Web Development Resources</a></li>
-                            <li><a href="javascript:;">Responsive HTML5 Portfolio Templates</a></li>
-                            <li><a href="javascript:;">Free Resources and Scripts</a></li>
-                        </ul>
-                    </div>
-                    <!-- /span3 -->
-                    <div class="span3">
-                        <h4>
-                            Support</h4>
-                        <ul>
-                            <li><a href="javascript:;">Frequently Asked Questions</a></li>
-                            <li><a href="javascript:;">Ask a Question</a></li>
-                            <li><a href="javascript:;">Video Tutorial</a></li>
-                            <li><a href="javascript:;">Feedback</a></li>
-                        </ul>
-                    </div>
-                    <!-- /span3 -->
-                    <div class="span3">
-                        <h4>
-                            Something Legal</h4>
-                        <ul>
-                            <li><a href="javascript:;">Read License</a></li>
-                            <li><a href="javascript:;">Terms of Use</a></li>
-                            <li><a href="javascript:;">Privacy Policy</a></li>
-                        </ul>
-                    </div>
-                    <!-- /span3 -->
-                    <div class="span3">
-                        <h4>
-                            Open Source jQuery Plugins</h4>
-                        <ul>
-                            <li><a href="http://www.egrappler.com">Open Source jQuery Plugins</a></li>
-                            <li><a href="http://www.egrappler.com;">HTML5 Responsive Tempaltes</a></li>
-                            <li><a href="http://www.egrappler.com;">Free Contact Form Plugin</a></li>
-                            <li><a href="http://www.egrappler.com;">Flat UI PSD</a></li>
-                        </ul>
-                    </div>
-                    <!-- /span3 -->
-                </div>
-                <!-- /row -->
-            </div>
-            <!-- /container -->
+  <div class="extra-inner">
+    <div class="container">
+        <div class="row">
+            <!-- Copyright © HouTelecom 2014. Tous droits réservés.  -->
         </div>
-        <!-- /extra-inner -->
+      <!-- /row -->
     </div>
-    <!-- /extra -->
-    <div class="footer">
-        <div class="footer-inner">
-            <div class="container">
-                <div class="row">
-                    <div class="span12">
-                        &copy; 2013 <a href="http://www.egrappler.com/">Bootstrap Responsive Admin Template</a>.
-                    </div>
-                    <!-- /span12 -->
-                </div>
-                <!-- /row -->
-            </div>
-            <!-- /container -->
+    <!-- /container -->
+  </div>
+  <!-- /extra-inner -->
+</div>
+
+<div class="footer">
+  <div class="footer-inner">
+    <div class="container">
+      <div class="row">
+        <div class="span12"> Copyright &copy; <a href="http://www.houtelecom.com/">HouTelecom</a> 2014.
+            Tous droits réservés.
         </div>
-        <!-- /footer-inner -->
+      </div>
     </div>
+  </div>
+</div>
     <!-- /footer -->
     <!-- Le javascript
 ================================================== -->
@@ -318,25 +282,9 @@ $ut_data= $ut->get_utilisateur();
 
         var myLine = new Chart(document.getElementById("area-chart").getContext("2d")).Line(lineChartData);
 
+    var myArray = <?php echo json_encode($barChartData); ?>;
 
-        var barChartData = {
-            labels: ["January", "February", "March", "April", "May", "June", "July"],
-            datasets: [
-				{
-				    fillColor: "rgba(220,220,220,0.5)",
-				    strokeColor: "rgba(220,220,220,1)",
-				    data: [65, 59, 90, 81, 56, 55, 40]
-				},
-				{
-				    fillColor: "rgba(151,187,205,0.5)",
-				    strokeColor: "rgba(151,187,205,1)",
-				    data: [28, 48, 40, 19, 96, 27, 100]
-				}
-			]
-
-        }
-
-var myLine = new Chart(document.getElementById("bar-chart").getContext("2d")).Bar(barChartData);
+var myLine = new Chart(document.getElementById("bar-chart").getContext("2d")).Bar(myArray);
 
 var pieData = [
 				{
