@@ -96,7 +96,6 @@ $ut_data= $ut->get_utilisateur();
         <!-- <li><a href="shortcodes.html"><i class="icon-code"></i><span>Shortcodes</span> </a> </li> -->
         <li class="dropdown"><a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown"> <i class="icon-long-arrow-down"></i><span>Autres</span> <b class="caret"></b></a>
           <ul class="dropdown-menu">
-            <li><a href="pages/qrcodes.php">QR Codes</a></li>
             <li><a href="pages/utilisateurs.php">Utilisateurs</a></li>
           </ul>
         </li>
@@ -221,7 +220,8 @@ $ut_data= $ut->get_utilisateur();
                                   </td>
                                     <td><?php echo escape($ouvrier["o_nom"]); ?></td>
                                     <td><?php echo escape($ouvrier["o_prenom"]); ?></td>
-                                    <td class="td-actions"><a href="rapports.php?id=<?php echo escape($ouvrier["o_id"]); ?>" class="btn btn-small btn-info">Détails<i class="btn-icon-only  icon-arrow-right"> </i></a></td>
+                                    <td class="td-actions"><a href="rapports.php?id=<?php echo escape($ouvrier["o_id"]); ?>" class="btn btn-small btn-info">Détails<i class="btn-icon-only  icon-arrow-right"> </i></a>
+                                    <a href="stats.php?id=<?php echo escape($ouvrier["o_id"]); ?>" class="btn btn-small btn-warning">Graphes<i class="btn-icon-only  icon-arrow-right"> </i></a></td>
                                   </tr>
                                   <?php endforeach; ?>
                                 </tbody>

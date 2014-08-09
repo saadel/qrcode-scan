@@ -83,13 +83,10 @@ $chefs=Chef::chefs();
       <ul class="mainnav">
         <li class="active"><a href="index.php"><i class="icon-dashboard"></i><span>Gestion</span> </a> </li>
         <li><a href="rapports.php"><i class="icon-list-alt"></i><span>Rapports</span> </a> </li>
-        <!-- <li><a href="guidely.html"><i class="icon-facetime-video"></i><span>App Tour</span> </a></li> -->
         <li><a href="stats.php"><i class="icon-bar-chart"></i><span>Stats</span> </a> </li>
-        <!-- <li><a href="shortcodes.html"><i class="icon-code"></i><span>Shortcodes</span> </a> </li> -->
         <li class="dropdown"><a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown"> <i class="icon-long-arrow-down"></i><span>Autres</span> <b class="caret"></b></a>
           <ul class="dropdown-menu">
-            <li><a href="qrcodes.php">QR Codes</a></li>
-            <li><a href="utilisateurs.php">Utilisateurs</a></li>            
+            <li><a href="pages/utilisateurs.php">Utilisateurs</a></li>            
           </ul>
         </li>
       </ul>
@@ -112,8 +109,8 @@ $chefs=Chef::chefs();
             <!-- /widget-header -->
             <div class="widget-content">
               <div class="widget big-stats-container">
-                <div class="widget-content">
-                  <h6 class="bigstats">
+                <div class="widget-content">                  
+                  <h6>
                   <br>
                   &nbsp;&nbsp;&nbsp;&nbsp; <i class="icon-user"></i>&nbsp;Utilisateurs&nbsp;&nbsp;&nbsp;  
                   <i class="icon-user-md"></i>&nbsp;Chefs&nbsp;&nbsp; &nbsp; 
@@ -123,23 +120,23 @@ $chefs=Chef::chefs();
                   <div id="big_stats" class="cf">
                     <!-- <div class="stat"> <i class="icon-anchor"></i> <span class="value">851</span> </div> -->
                     <!-- .stat -->
-                    <div class="stat"> <i class="icon-user"></i> <span class="value">
+                    <div class="stat"> <i class="icon-user"></i><h3>
                     <?php 
                         echo $ut->count_all();
-                    ?></span> </div>
+                        ?></h3> </div>
                     <!-- .stat -->
                     
-                    <div class="stat"> <i class="icon-user-md"></i> <span class="value">
+                    <div class="stat"> <i class="icon-user-md"></i><h3><span>
                     <?php 
                         $ch = new Chef();
                         echo $ch->count_all();
-                    ?></span> </div>
+                        ?></span></h3> </div>
                     <!-- .stat -->
-                    <div class="stat"> <i class="icon-group"></i> <span class="value">
+                    <div class="stat"> <i class="icon-group"></i><h3><span>
                     <?php 
                         $ou = new Ouvrier();
                         echo $ou->count_all();
-                    ?></span> </div>
+                        ?></span></h3> </div>
                     
                     <!-- .stat --> 
                   </div>
@@ -157,11 +154,10 @@ $chefs=Chef::chefs();
             </div>
             <!-- /widget-header -->
             <div class="widget-content">
+            <br>
               <div class="shortcuts"> <a href="rapports.php" class="shortcut"><i class="shortcut-icon icon-list-alt"></i><span
                                         class="shortcut-label">Rapports</span> </a><a href="javascript:;" class="shortcut"><i
-                                            class="shortcut-icon  icon-sitemap"></i><span class="shortcut-label">Plan du site</span> </a><a href="stats.php" class="shortcut"><i class="shortcut-icon icon-signal"></i> <span class="shortcut-label">Stats</span> </a><a href="pages/qrcodes.php" class="shortcut"> <i class="shortcut-icon icon-qrcode"></i><span class="shortcut-label">QR Codes</span> </a><a href="pages/utilisateurs.php" class="shortcut"><i class="shortcut-icon icon-user"></i><span
-                                                class="shortcut-label">Utilisateurs</span> </a><a href="javascript:;" class="shortcut"><i
-                                                    class="shortcut-icon icon-file"></i><span class="shortcut-label">Notes</span> </a><a href="javascript:;" class="shortcut"><i class="shortcut-icon icon-picture"></i> <span class="shortcut-label">Photos</span> </a><a href="javascript:;" class="shortcut"> <i class="shortcut-icon icon-calendar"></i><span class="shortcut-label">Calendrier</span> </a> </div>
+                                            class="shortcut-icon  icon-sitemap"></i><span class="shortcut-label">Plan du site</span> </a><a href="stats.php" class="shortcut"><i class="shortcut-icon icon-signal"></i> <span class="shortcut-label">Stats</span> </a><a href="pages/qrcodes.php" class="shortcut"> <i class="shortcut-icon icon-qrcode"></i><span class="shortcut-label">QR Codes</span> </a> </div>
               <!-- /shortcuts --> 
             </div>
             <!-- /widget-content --> 

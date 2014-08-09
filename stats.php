@@ -85,7 +85,6 @@ $ut_data= $ut->get_utilisateur();
         <!-- <li><a href="shortcodes.html"><i class="icon-code"></i><span>Shortcodes</span> </a> </li> -->
         <li class="dropdown"><a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown"> <i class="icon-long-arrow-down"></i><span>Autres</span> <b class="caret"></b></a>
           <ul class="dropdown-menu">
-            <li><a href="pages/qrcodes.php">QR Codes</a></li>
             <li><a href="pages/utilisateurs.php">Utilisateurs</a></li>
           </ul>
         </li>
@@ -140,21 +139,17 @@ $ut_data= $ut->get_utilisateur();
                             <!-- /widget-content -->
                         </div>
                         <!-- /widget -->
-                        <div class="widget">
+                        <!-- <div class="widget">
                             <div class="widget-header">
                                 <i class="icon-bar-chart"></i>
                                 <h3>
                                     Pie Chart</h3>
                             </div>
-                            <!-- /widget-header -->
                             <div class="widget-content">
                                 <canvas id="pie-chart" class="chart-holder" width="538" height="250">
                                 </canvas>
-                                <!-- /pie-chart -->
                             </div>
-                            <!-- /widget-content -->
-                        </div>
-                        <!-- /widget -->
+                        </div> -->
                     </div>
                     <!-- /span6 -->
                     <div class="span6">

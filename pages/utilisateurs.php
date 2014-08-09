@@ -107,11 +107,8 @@ $ut_data= $ut->get_utilisateur();
             <!-- /widget-header -->
             <div class="widget-content">
               <div class="widget big-stats-container">
-                <div class="widget-content">
-                  <h6 class="bigstats">
-                  <!-- A fully responsive premium quality admin template built 
-                  on Twitter Bootstrap by <a href="http://www.egrappler.com" target="_blank">EGrappler.com</a>.  
-                  These are some dummy lines to fill the area.</h6> -->
+                <div class="widget-content">                  
+                  <h6>
                   <br>
                   &nbsp;&nbsp;&nbsp;&nbsp; <i class="icon-user"></i>&nbsp;Utilisateurs&nbsp;&nbsp;&nbsp;  
                   <i class="icon-user-md"></i>&nbsp;Chefs&nbsp;&nbsp; &nbsp; 
@@ -121,23 +118,23 @@ $ut_data= $ut->get_utilisateur();
                   <div id="big_stats" class="cf">
                     <!-- <div class="stat"> <i class="icon-anchor"></i> <span class="value">851</span> </div> -->
                     <!-- .stat -->
-                    <div class="stat"> <i class="icon-user"></i> <span class="value">
+                    <div class="stat"> <i class="icon-user"></i><h3>
                     <?php 
                         echo $ut->count_all();
-                    ?></span> </div>
+                        ?></h3> </div>
                     <!-- .stat -->
                     
-                    <div class="stat"> <i class="icon-user-md"></i> <span class="value">
+                    <div class="stat"> <i class="icon-user-md"></i><h3><span>
                     <?php 
                         $ch = new Chef();
                         echo $ch->count_all();
-                    ?></span> </div>
+                        ?></span></h3> </div>
                     <!-- .stat -->
-                    <div class="stat"> <i class="icon-group"></i> <span class="value">
+                    <div class="stat"> <i class="icon-group"></i><h3><span>
                     <?php 
                         $ou = new Ouvrier();
                         echo $ou->count_all();
-                    ?></span> </div>
+                        ?></span></h3> </div>
                     
                     <!-- .stat --> 
                   </div>
@@ -155,21 +152,15 @@ $ut_data= $ut->get_utilisateur();
             </div>
             <!-- /widget-header -->
             <div class="widget-content">
-              <div class="shortcuts"> <a href="../rapports.php" class="shortcut"><i class="shortcut-icon icon-list-alt"></i><span
+            <br>
+              <div class="shortcuts"> <a href="rapports.php" class="shortcut"><i class="shortcut-icon icon-list-alt"></i><span
                                         class="shortcut-label">Rapports</span> </a><a href="javascript:;" class="shortcut"><i
-                                            class="shortcut-icon  icon-sitemap"></i><span class="shortcut-label">Plan du site</span> </a>
-                                            <a href="../stats.php" class="shortcut"><i class="shortcut-icon icon-signal"></i> <span class="shortcut-label">Stats</span> </a>
-                                            <a href="../pages/qrcodes.php" class="shortcut"> <i class="shortcut-icon icon-qrcode"></i><span class="shortcut-label">QR Codes</span> </a>
-                                            <a href="../pages/utilisateurs.php" class="shortcut"><i class="shortcut-icon icon-user"></i><span
-                                            class="shortcut-label">Utilisateurs</span> </a><a href="javascript:;" class="shortcut"><i
-                                            class="shortcut-icon icon-file"></i><span class="shortcut-label">Notes</span> </a>
-                                            <a href="javascript:;" class="shortcut"><i class="shortcut-icon icon-picture"></i> <span class="shortcut-label">Photos</span> </a>
-                                            <a href="javascript:;" class="shortcut"> <i class="shortcut-icon icon-calendar"></i><span class="shortcut-label">Calendrier</span> </a> </div>
+                                            class="shortcut-icon  icon-sitemap"></i><span class="shortcut-label">Plan du site</span> </a><a href="stats.php" class="shortcut"><i class="shortcut-icon icon-signal"></i> <span class="shortcut-label">Stats</span> </a><a href="pages/qrcodes.php" class="shortcut"> <i class="shortcut-icon icon-qrcode"></i><span class="shortcut-label">QR Codes</span> </a> </div>
               <!-- /shortcuts --> 
             </div>
             <!-- /widget-content --> 
           </div>
-          </div>
+          </div>    
         <div class="span12">
             <div class="widget widget-table action-table">
             <div class="widget-header"> <i class="icon-th-list"></i>
