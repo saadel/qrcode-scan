@@ -144,8 +144,8 @@ $ut_data= $ut->get_utilisateur();
                         <td><?php echo escape($info["i_jour"]); ?></td>
                         <td><?php echo escape($info["heure_debut"]); ?></td>
                         <td><?php echo escape($info["heure_fin"]); ?></td>
-                        <td class="td-actions"><a href="#editInfo<?php echo $id; ?>" role="button" data-toggle="modal" class="btn btn-small btn-invert"><i class="btn-icon-only icon-edit"> Modifier</i></a>
-                        <a href="#deleteInfo<?php echo $id; ?>" role="button" data-toggle="modal" class="btn btn-danger btn-small"><i class="btn-icon-only icon-remove"> </i></a></td>
+                        <td class="td-actions">
+                        <a href="#deleteInfo<?php echo $id; ?>" role="button" data-toggle="modal" class="btn btn-danger btn-small">Supprimer <i class="btn-icon-only icon-remove"> </i></a></td>
                         <div id="deleteInfo<?php echo $id; ?>" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
                             <div class="modal-header">
                                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
