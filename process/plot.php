@@ -22,8 +22,51 @@
                     $array[$i] = 'Samedi';
                     break;  
                 case 'Sunday':
-                    $array[$i] = 'Dimanche';
+                    $array[$i] = 'Dimanche';                    
+            }        
+        }
+        return $array;
+    }
+
+    function fixMonths($array)
+    {
+        for ($i=0; $i < count($array); $i++) { 
+            switch ($array[$i]) {
+                case 'January':
+                    $array[$i] = 'Janvier';
+                    break;
+                case 'February':
+                    $array[$i] = 'Fevrier';
+                    break;
+                case 'March':
+                    $array[$i] = 'Mars';
+                    break;
+                case 'April':
+                    $array[$i] = 'Avril';
+                    break;
+                case 'May':
+                    $array[$i] = 'Mai';
+                    break;      
+                case 'June':
+                    $array[$i] = 'Juin';
                     break;  
+                case 'July':
+                    $array[$i] = 'Juillet';
+                    break;  
+                case 'August':
+                    $array[$i] = 'Aout';
+                    break;
+                case 'September':
+                    $array[$i] = 'Septembre';
+                    break;
+                case 'October':
+                    $array[$i] = 'Octobre';
+                    break;
+                case 'November':
+                    $array[$i] = 'Novembre';
+                    break;
+                case 'December':
+                    $array[$i] = 'Decembre';                    
             }        
         }
         return $array;
@@ -54,4 +97,7 @@
         return $barChartData;
     }
 
-    
+    // function plotLastMonth($id)
+    // {
+    //     # code...
+    // }

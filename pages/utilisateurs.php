@@ -157,6 +157,7 @@ $ut_data= $ut->get_utilisateur();
                                         class="shortcut-label">Rapports</span> </a><a href="javascript:;" class="shortcut"><i
                                             class="shortcut-icon  icon-sitemap"></i><span class="shortcut-label">Plan du site</span> </a><a href="stats.php" class="shortcut"><i class="shortcut-icon icon-signal"></i> <span class="shortcut-label">Stats</span> </a><a href="pages/qrcodes.php" class="shortcut"> <i class="shortcut-icon icon-qrcode"></i><span class="shortcut-label">QR Codes</span> </a> </div>
               <!-- /shortcuts --> 
+              <br>
             </div>
             <!-- /widget-content --> 
           </div>
