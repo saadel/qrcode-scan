@@ -113,7 +113,7 @@ $ut_data= $ut->get_utilisateur();
                             <div class="widget-header">
                                 <i class="icon-bar-chart"></i>
                                 <h3>
-                                    Bar Chart</h3>
+                                    Semaine</h3>
                             </div>
                             <!-- /widget-header -->
                             <div class="widget-content">
@@ -128,36 +128,7 @@ $ut_data= $ut->get_utilisateur();
                             <div class="widget-header">
                                 <i class="icon-bar-chart"></i>
                                 <h3>
-                                    Line Chart</h3>
-                            </div>
-                            <!-- /widget-header -->
-                            <div class="widget-content">
-                                <canvas id="area-chart" class="chart-holder" width="538" height="250">
-                                </canvas>
-                                <!-- /line-chart -->
-                            </div>
-                            <!-- /widget-content -->
-                        </div>
-                        <!-- /widget -->
-                        <!-- <div class="widget">
-                            <div class="widget-header">
-                                <i class="icon-bar-chart"></i>
-                                <h3>
-                                    Pie Chart</h3>
-                            </div>
-                            <div class="widget-content">
-                                <canvas id="pie-chart" class="chart-holder" width="538" height="250">
-                                </canvas>
-                            </div>
-                        </div> -->
-                    </div>
-                    <!-- /span6 -->
-                    <div class="span6">
-                        <div class="widget">
-                            <div class="widget-header">
-                                <i class="icon-bar-chart"></i>
-                                <h3>
-                                    Donut Chart</h3>
+                                    Exemple</h3>
                             </div>
                             <!-- /widget-header -->
                             <div class="widget-content">
@@ -166,22 +137,24 @@ $ut_data= $ut->get_utilisateur();
                                 <!-- /bar-chart -->
                             </div>
                             <!-- /widget-content -->
-                        </div>
-                        <!-- /widget -->
+                        </div>                          
+                    </div>
+                    <!-- /span6 -->
+                    <div class="span6">
                         <div class="widget">
                             <div class="widget-header">
                                 <i class="icon-bar-chart"></i>
                                 <h3>
-                                    A Chart</h3>
+                                    Mois</h3>
                             </div>
                             <!-- /widget-header -->
                             <div class="widget-content">
-                                <canvas id="line-chart" class="chart-holder" width="538" height="250">
+                                <canvas id="area-chart" class="chart-holder" width="538" height="250">
                                 </canvas>
-                                <!-- /-chart -->
+                                <!-- /line-chart -->
                             </div>
                             <!-- /widget-content -->
-                        </div>
+                        </div>                   
                         <!-- /widget -->
                     </div>
                     <!-- /span6 -->
