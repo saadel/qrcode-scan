@@ -178,6 +178,7 @@ $chefs=Chef::chefs();
 	              <table class="table table-striped table-bordered">
 	                <thead>
 	                  <tr>
+                        <th class="td-photos"></th>
 	                    <th> Nom </th>
 	                    <th> Prénom </th>
 	                    <th class="td-actions"> </th>
@@ -187,6 +188,18 @@ $chefs=Chef::chefs();
 	                <?php foreach($chefs as $chef):?>
 	                  <tr>
 	                  	<?php $id = $chef["c_id"]; ?>
+                        <td>
+                      <div class="from_user left"> 
+                          <img src="<?php if(empty($ouvrier["photo"]))
+                          {
+                              echo "img/message_avatar1.png";
+                          }else
+                          {
+                             echo  escape($ouvrier["photo"]);      
+                          }
+                          ?>"/>
+                        </div>
+                      </td>
 	                    <td>
 	                    <?php echo escape($chef["c_nom"]); ?></td>
 	                    <td><?php echo escape($chef["c_prenom"]); ?></td>
