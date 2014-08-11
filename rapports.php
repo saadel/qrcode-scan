@@ -159,25 +159,7 @@ $ut_data= $ut->get_utilisateur();
                                     <button class="btn" data-dismiss="modal" aria-hidden="true">Annuler</button>
                                 </div>
                             </form>
-                        </div>
-
-                        <div id="editInfo<?php echo $id; ?>" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-                            <div class="modal-header">
-                                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-                                <h3 id="myModalLabel">Modification</h3>
-                            </div>
-                            <form action="process/edit.php" method="post">
-                                <div class="modal-body pull-left">
-                                    <input type="hidden" name="id_info" value='<?php echo escape($id); ?>'>
-                                    <input type="date" name="jour" placeholder="<?php echo $info["i_jour"]; ?>" required><br>
-                                    <input type="time" name="heuredeb" required><br>
-                                    <input type="time" name="heurefin" required><br><br>
-                                    <button class="btn btn-primary">Enregistrer</button>
-                                    <button class="btn" data-dismiss="modal" aria-hidden="true">Annuler</button>
-                                </div>
-                            </form>
-                        </div>
-
+                        </div>                
                       </tr>
                     <?php endforeach; ?>
                     </tbody>
