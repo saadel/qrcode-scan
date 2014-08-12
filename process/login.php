@@ -20,7 +20,7 @@
     }
      elseif (!user_active($username)) {
      	$_SESSION['username'] = $username;
-     	$session->message('Vous n\'avez pas encore activé votre compte : <a href="activation.php">Activation</a>');
+     	$session->message('Vous n\'avez pas encore activé votre compte.');
 		header('Location: ../login.php');
     } else {
 		$ut = new Utilisateur();

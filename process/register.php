@@ -53,11 +53,10 @@
 			'u_prenom' => ucfirst($_POST['prenom']),
 			'email' => $_POST['email'],
 			'password' => $_POST['password'],
-			'validation' => 0,
+			'validation' => 1,
 		);
 		$_SESSION['data'] = $register_data;
 		$_SESSION['code'] = $emailcode;
 		register_user($register_data,$emailcode);
-	    header('Location: ../activation.php');
 	}		
 ?>

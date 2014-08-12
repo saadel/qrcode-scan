@@ -48,13 +48,11 @@ function dureeJour($oid, $jour) {
     $duree = '00:00:00';
     foreach ($infos as $info) {
         date_default_timezone_set('Africa/Casablanca');
-        // echo date("H:i:s", $dur + strtotime(getDureeInfo($info['i_id']))).'<br><br>';
         if (!is_null($info['heure_fin'])) {
             $durinfo = getDureeInfo($info['i_id']);
             $duree = sum_the_time($duree, $durinfo);
         }
     }
     date_default_timezone_set('Africa/Casablanca');
-    // $duree = date("H:i:s", $duree);
     return $duree;
 }
