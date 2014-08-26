@@ -233,7 +233,7 @@ $chefs=Chef::chefs();
                     <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
                     <h3 id="myModalLabel">Ajout d'un nouveau chef</h3>
                   </div>
-                    <form action="process/add.php" method="post">
+                    <form action="process/add.php" method="post" enctype="multipart/form-data">
                       <div class="modal-body">
                             <div class="form-group">
                               <input name="nomchef" type="text" class="form-control" required placeholder="Nom">
@@ -241,6 +241,10 @@ $chefs=Chef::chefs();
                             <div class="form-group">
                               <input name="prenomchef" type="text" class="form-control" required placeholder="Prenom">
                           </div>
+                            <h4> Photo : </h4>
+                            <div class="form-group">
+                              <input name="photochef" type="file" class="form-control">
+                            </div>
                       </div>
                       <div class="modal-footer">
                         <button class="btn btn-primary">Enregistrer</button>
@@ -321,7 +325,7 @@ $chefs=Chef::chefs();
                     <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
                     <h3 id="myModalLabel">Ajout d'un nouveau ouvrier</h3>
                   </div>
-                    <form method="post" action="process/add.php">
+                    <form method="post" action="process/add.php" enctype="multipart/form-data">
                       <div class="modal-body">
                         	<div class="form-group">
     	                      <input name="nomouvrier" type="text" class="form-control" required placeholder="Nom">
@@ -329,7 +333,10 @@ $chefs=Chef::chefs();
     	                    <div class="form-group">
     	                      <input name="prenomouvrier" type="text" class="form-control" required placeholder="Prenom">
     	                    </div>
-
+                            <h4> Photo : </h4>
+                            <div class="form-group">
+                              <input name="photoouvrier" type="file" class="form-control">
+                            </div>
                             <!-- <input  type="file" name="ophoto" class="form-control" required > -->
                         <!-- </div> -->
     	                  <div class="form-group" id="qr">

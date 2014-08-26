@@ -35,3 +35,35 @@ if(!empty($_POST['prenomchef'])) {
 	$ch->create();
 	header('Location: ../gestion.php');
 }
+
+if (isset($_FILES['photochef']) AND $_FILES['photochef']['error'] == 0)
+{
+    if ($_FILES['photochef']['size'] <= 1000000)
+    {
+        $infosfichier = pathinfo($_FILES['photochef']['name']);
+        $extension_upload = $infosfichier['extension'];
+        $extensions_autorisees = array('jpg', 'jpeg', 'gif', 'png');
+        if (in_array($extension_upload, $extensions_autorisees))
+        {
+            e_uploaded_file($_FILES['photochef']['tmp_name'], 'uploads/' . 
+                basename($_FILES['photochef']['name']));
+            echo "L'envoi a bien été effectué !";
+        }
+    }
+}
+
+if (isset($_FILES['photoouvrier']) AND $_FILES['photoouvrier']['error'] == 0)
+{
+    if ($_FILES['photoouvrier']['size'] <= 1000000)
+    {
+        $infosfichier = pathinfo($_FILES['photoouvrier']['name']);
+        $extension_upload = $infosfichier['extension'];
+        $extensions_autorisees = array('jpg', 'jpeg', 'gif', 'png');
+        if (in_array($extension_upload, $extensions_autorisees))
+        {
+            e_uploaded_file($_FILES['photoouvrier']['tmp_name'], 'uploads/' . 
+                basename($_FILES['photoouvrier']['name']));
+            echo "L'envoi a bien été effectué !";
+        }
+    }
+}
