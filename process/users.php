@@ -23,7 +23,7 @@
 	function user_active($username)
 	{
 	    global $db;
-	    $sql = 'SELECT u_id FROM utilisateur WHERE username = ? AND validation = ?';
+	    $sql = 'SELECT u_id FROM utilisateur WHERE username = ? AND u_validation = ?';
 		$re=$db->query($sql,array($username, 1));
 		$resultat=$re->fetch();
 		

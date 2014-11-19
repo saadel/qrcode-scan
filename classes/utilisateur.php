@@ -25,15 +25,16 @@
 		{
 			global $db;
 
-			$sql = "SELECT password FROM " . self::$_table;
+			$sql = "SELECT u_password FROM " . self::$_table;
 			$sql .= " WHERE username=:username"; 
 			$sql .= " LIMIT 1;";
 
 			$re = $db->query($sql, array("username"=>$username));
 			$resultat = $re->fetch();
-			$resultat = $resultat['password'];
+			$resultat = $resultat['u_password'];
 
-			if(password_verify($password,$resultat))
+//			if(password_verify($password,$resultat))
+            if($password == $resultat)
 			{
 				$this->find_by_username($username);
 				return true;
