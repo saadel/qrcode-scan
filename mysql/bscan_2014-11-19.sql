@@ -112,7 +112,7 @@ LOCK TABLES `Utilisateur` WRITE;
 
 INSERT INTO `Utilisateur` (`u_id`, `u_nom`, `u_prenom`, `username`, `u_password`, `u_validation`)
 VALUES
-	(1,'test','testing','test','000000',1);
+	(1,'test','testing','test','$2y$10$SNciDO7tWo7DsLrohpVM4uD27FBQwwu7UJTidHNe26L6Hrde56uKO',1);
 
 /*!40000 ALTER TABLE `Utilisateur` ENABLE KEYS */;
 UNLOCK TABLES;
