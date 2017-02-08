@@ -1,10 +1,11 @@
-<?php	
+<?php
 	require_once(__DIR__.'/../classes/database.php');
 	require_once(__DIR__.'/../classes/utilisateur.php');
 	require_once(__DIR__.'/../classes/session.php');
+	require_once(__DIR__.'/../lib/password.php');
 	require_once(__DIR__.'/users.php');
 
-  	$session = new Session();  	
+  	$session = new Session();
 
   	$valid = true;
 
@@ -25,12 +26,6 @@
 	    header('Location: ../signup.php');
 	  }
 
-	  if (!preg_match("#^[A-Za-z0-9._-]+@[A-Za-z0-9._-]{2,}\.[A-Za-z]{2,4}$#", $_POST['email'])) {
-	    $session->message('L\'adresse ' . $_POST['email'] . ' n\'est pas valide');
-	    $valid = false;
-	    header('Location: ../signup.php');
-	  }
-
 	  if (strlen($_POST['password']) < 6) {
 	    $session->message('Le mot de passe doit être de 6 caractères ou plus');
 	    $valid = false;
@@ -45,18 +40,25 @@
 	}
 }
 
-  	if ($valid) {				
+  	if ($valid) {
 		$emailcode = md5($_POST['email'] + microtime());
 		$emailcode = substr($emailcode, -13, 7);
 		$register_data = array(
-			'u_nom' => ucfirst($_POST['nom']),
-			'u_prenom' => ucfirst($_POST['prenom']),
-			'email' => $_POST['email'],
-			'password' => $_POST['password'],
-			'validation' => 1,
+			'u_nom' => ucfirst($_POST['lastname']),
+			'u_prenom' => ucfirst($_POST['firstname']),
+			'username' => $_POST['email'],
+			'u_password' => password_hash($_POST['password'], PASSWORD_BCRYPT),
+			'u_validation' => 1,
 		);
 		$_SESSION['data'] = $register_data;
 		$_SESSION['code'] = $emailcode;
-		register_user($register_data,$emailcode);
-	}		
-?>
+		$ut = new Utilisateur();
+		foreach ($register_data as $key => $value) {
+			$ut->set_utilisateur($key,$value);
+		}
+		if ($ut->create()) {
+			header('Location: ../login.php');
+		} else {
+			var_dump($ut);
+		}
+	}

@@ -8,7 +8,7 @@
 
 	  	private static $_table = "utilisateur";
 		private $utilisateur;
-		
+
 		public function __construct()
 		{
 			$this->utilisateur = array(
@@ -26,15 +26,14 @@
 			global $db;
 
 			$sql = "SELECT u_password FROM " . self::$_table;
-			$sql .= " WHERE username=:username"; 
+			$sql .= " WHERE username=:username";
 			$sql .= " LIMIT 1;";
 
 			$re = $db->query($sql, array("username"=>$username));
 			$resultat = $re->fetch();
 			$resultat = $resultat['u_password'];
 
-//			if(password_verify($password,$resultat))
-            if($password == $resultat)
+			if(password_verify($password,$resultat))
 			{
 				$this->find_by_username($username);
 				return true;
@@ -43,7 +42,7 @@
 				return false;
 			}
 		}
-		
+
 
 		public function get_utilisateur()
 		{
@@ -62,7 +61,7 @@
 			global $db;
 
 			$sql = "SELECT * FROM " . self::$_table;
-			$sql .= " WHERE u_id=:id"; 
+			$sql .= " WHERE u_id=:id";
 			$sql .= " LIMIT 1;";
 
 			$re = $db->query($sql, array("id"=>$id));
@@ -75,14 +74,14 @@
 			else
 			{
 				$this->utilisateur = $resultat;
-			}	
+			}
 		}
 
 		public function find_by_username($username)
 		{
 			global $db;
 			$sql="select * from ".self::$_table;
-			$sql.=" where username=:username"; 
+			$sql.=" where username=:username";
 			$sql.=" limit 1;";
 			$re=$db->query($sql,array("username"=>$username));
 			$resultat=$re->fetch(PDO::FETCH_ASSOC);
@@ -90,7 +89,7 @@
 				$this->utilisateur=array();
 			} else {
 				$this->utilisateur=$resultat;
-			}	
+			}
 		}
 
 		public function count_all()
@@ -101,7 +100,7 @@
 
 			$re = $db->query($sql);
 			$resultat = $re->fetch(PDO::FETCH_ASSOC);
-			
+
 			return array_shift($resultat);
 		}
 
@@ -113,7 +112,7 @@
 			$sql = "INSERT INTO " . self::$_table;
 			$sql .= " (" . implode(",",array_keys($this->utilisateur)) . ")";
 			$sql .= " values(:".implode(", :",array_keys($this->utilisateur)) . ");";
-			
+
 			$re = $db->query($sql, $this->utilisateur);
 
 			if($db->affected_rows($re) > 0)
@@ -125,7 +124,7 @@
 			{
 				return false;
 			}
-		
+
 		}
 
 
@@ -141,11 +140,11 @@
 			{
 				$array_key_key[] = $key . "=:" . $key;
 			}
-			
+
 			$sql = "UPDATE " . self::$_table;
 			$sql .= " SET ". implode(",", $array_key_key);
 			$sql .= " WHERE u_id=:u_id;";
-			
+
 			$re = $db->query($sql, $this->utilisateur);
 
 			if($db->affected_rows($re) > 0)
@@ -157,21 +156,21 @@
 				return false;
 			}
 		}
-		
+
 		public static function utilisateurs()
 		{
 			global $db;
 
 			$sql = "SELECT *
-				    FROM ".self::$_table.";";	
-		   
+				    FROM ".self::$_table.";";
+
 		    $list = array();
 			$re = $db->query($sql);
 			$list = $re->fetchAll(PDO::FETCH_ASSOC);
-			
+
 			return $list;
 		}
-		
+
 	}
 
 

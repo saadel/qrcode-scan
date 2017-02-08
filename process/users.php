@@ -26,21 +26,10 @@
 	    $sql = 'SELECT u_id FROM utilisateur WHERE username = ? AND u_validation = ?';
 		$re=$db->query($sql,array($username, 1));
 		$resultat=$re->fetch();
-		
+
 		if (empty($resultat)) {
 			return false;
 		} else {
 			return true;
 		}
-	}
-
-	function register_user($register_data)
-	{
-		global $db;
-		$register_data['password'] = password_hash($register_data['password'], PASSWORD_BCRYPT);
-		$ut = new Utilisateur();
-		foreach ($register_data as $key => $value) {
-			$ut->set_utilisateur($key,$value);
-		}
-		$ut->create();
 	}
